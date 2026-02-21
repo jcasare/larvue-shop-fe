@@ -13,3 +13,17 @@ export const useMainStore = defineStore("main", {
     getCount: (state) => state.count,
   },
 });
+
+export const useAuthStore = defineStore("auth", {
+  state: () => ({
+    isAuthenticated: true,
+  }),
+  actions: {
+    setAuthenticated(value) {
+      this.isAuthenticated = value;
+    },
+  },
+  getters: {
+    getAuthenticated: (state) => state.isAuthenticated,
+  },
+});
