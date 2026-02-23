@@ -14,13 +14,19 @@
       collapsed ? 'w-20' : 'w-72',
     ]"
   >
-    <!-- Logo -->
+    <!-- Logo + mobile close -->
     <div class="flex h-16 items-center px-6" :class="collapsed ? 'justify-center px-0' : ''">
       <img
         src="@/assets/vular-logo.png"
         alt="Vular"
         :class="collapsed ? 'h-8 w-auto' : 'h-14 w-auto'"
       />
+      <button
+        class="ml-auto rounded-md p-1.5 text-indigo-300 hover:bg-indigo-900 hover:text-white lg:hidden"
+        @click="$emit('close')"
+      >
+        <XMarkIcon class="h-5 w-5" />
+      </button>
     </div>
 
     <!-- Navigation -->
@@ -47,20 +53,6 @@
         <span v-if="!collapsed">{{ item.label }}</span>
       </router-link>
     </nav>
-
-    <!-- Collapse toggle (desktop only) -->
-    <div class="hidden px-3 pb-2 lg:block">
-      <button
-        class="flex w-full items-center justify-center rounded-lg py-2 text-indigo-300 hover:bg-indigo-900 hover:text-white transition-colors"
-        :title="collapsed ? 'Expand sidebar' : 'Collapse sidebar'"
-        @click="$emit('toggle-collapse')"
-      >
-        <ChevronDoubleLeftIcon
-          class="h-5 w-5 transition-transform duration-300"
-          :class="collapsed ? 'rotate-180' : ''"
-        />
-      </button>
-    </div>
 
     <!-- User profile -->
     <div class="relative border-t border-indigo-800 p-4" :class="collapsed ? 'p-2' : ''">
@@ -124,7 +116,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useAuthStore } from '@/store'
+import { useAuthStore } from '@/stores/auth'
 import {
   HomeIcon,
   ShoppingBagIcon,
@@ -134,8 +126,8 @@ import {
   Cog6ToothIcon,
   ArrowRightStartOnRectangleIcon,
   ChevronUpIcon,
-  ChevronDoubleLeftIcon,
   UserCircleIcon,
+  XMarkIcon,
 } from '@heroicons/vue/24/outline'
 
 const profileMenuOpen = ref(false)
@@ -151,7 +143,7 @@ defineProps({
   },
 })
 
-defineEmits(['close', 'toggle-collapse'])
+defineEmits(['close'])
 
 const route = useRoute()
 const router = useRouter()

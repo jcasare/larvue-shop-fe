@@ -4,7 +4,6 @@
       :open="sidebarOpen"
       :collapsed="sidebarCollapsed"
       @close="sidebarOpen = false"
-      @toggle-collapse="sidebarCollapsed = !sidebarCollapsed"
     />
 
     <!-- Main content -->
@@ -17,6 +16,15 @@
           @click="sidebarOpen = true"
         >
           <Bars3Icon class="h-6 w-6" />
+        </button>
+
+        <!-- Desktop collapse toggle -->
+        <button
+          class="hidden rounded-md p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-gray-200 lg:block"
+          @click="sidebarCollapsed = !sidebarCollapsed"
+          :title="sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'"
+        >
+          <Bars3BottomLeftIcon class="h-6 w-6" />
         </button>
 
         <!-- Page title -->
@@ -92,12 +100,13 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   Bars3Icon,
+  Bars3BottomLeftIcon,
   BellIcon,
   UserCircleIcon,
   ArrowRightStartOnRectangleIcon,
 } from '@heroicons/vue/24/outline'
 import Sidebar from '@/components/Sidebar.vue'
-import { useAuthStore } from '@/store'
+import { useAuthStore } from '@/stores/auth'
 
 const route = useRoute()
 const router = useRouter()
