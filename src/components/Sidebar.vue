@@ -61,16 +61,16 @@
           'flex w-full items-center rounded-lg text-left hover:bg-indigo-900',
           collapsed ? 'justify-center p-1' : 'gap-3 p-1',
         ]"
-        :title="collapsed ? 'John Doe' : undefined"
+        :title="collapsed ? userName : undefined"
         @click="profileMenuOpen = !profileMenuOpen"
       >
         <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-indigo-700 text-sm font-medium text-white">
-          JD
+          {{ userInitials }}
         </div>
         <template v-if="!collapsed">
           <div class="flex-1 min-w-0">
-            <p class="truncate text-sm font-medium text-white">John Doe</p>
-            <p class="truncate text-xs text-indigo-300">john@example.com</p>
+            <p class="truncate text-sm font-medium text-white">{{ userName }}</p>
+            <p class="truncate text-xs text-indigo-300">{{ userEmail }}</p>
           </div>
           <ChevronUpIcon class="h-4 w-4 shrink-0 text-indigo-300" />
         </template>
@@ -114,7 +114,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import {
@@ -149,6 +149,16 @@ const route = useRoute()
 const router = useRouter()
 const authStore = useAuthStore()
 
+const userName = computed(() => authStore.user?.name || 'User')
+const userEmail = computed(() => authStore.user?.email || '')
+const userInitials = computed(() => {
+  const name = userName.value
+  const parts = name.split(' ')
+  return parts.length > 1
+    ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+    : name.slice(0, 2).toUpperCase()
+})
+
 const navItems = [
   { label: 'Dashboard', to: '/dashboard', icon: HomeIcon, name: 'dashboard' },
   { label: 'Products', to: '/products', icon: ShoppingBagIcon, name: 'products' },
@@ -162,8 +172,8 @@ function isActive(path) {
   return route.path === path
 }
 
-function logout() {
-  authStore.setAuthenticated(false)
+async function logout() {
+  await authStore.logout()
   router.push({ name: 'login' })
 }
 </script>

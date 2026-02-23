@@ -3,7 +3,7 @@ import Login from '@/views/auth/Login.vue'
 import ForgotPassword from '@/views/auth/ForgotPassword.vue'
 import ResetPassword from '@/views/auth/ResetPassword.vue'
 import Dashboard from '@/views/Dashboard.vue'
-import Products from '@/views/Products.vue'
+import Products from '@/views/Products/Products.vue'
 import AppLayout from '@/layouts/AppLayout.vue'
 import { useAuthStore } from '@/stores/auth'
 import Orders from '@/views/Orders.vue'
@@ -95,8 +95,21 @@ const routes = [
     routes
 })
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     const authStore = useAuthStore()
+
+    // If we have a token but no user data, fetch it
+    if (authStore.token && !authStore.user) {
+        try {
+            await authStore.getUser()
+        } catch {
+            // Token is invalid — clear and redirect to login
+            authStore.setToken(null)
+            authStore.setUser(null)
+            return next({ name: 'login' })
+        }
+    }
+
     if (to.matched.some(record => record.meta.requiresAuth) && !authStore.getAuthenticated) {
         next({
             name: 'login'

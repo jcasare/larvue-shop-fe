@@ -27,10 +27,6 @@
           <Bars3BottomLeftIcon class="h-6 w-6" />
         </button>
 
-        <!-- Page title -->
-        <h1 class="text-lg font-semibold text-gray-900 capitalize dark:text-white">
-          {{ route.name }}
-        </h1>
 
         <div class="flex-1" />
 
@@ -46,7 +42,7 @@
               class="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               @click="userMenuOpen = !userMenuOpen"
             >
-              JD
+              {{ userInitials }}
             </button>
 
             <!-- Dropdown -->
@@ -63,8 +59,8 @@
                 class="absolute right-0 mt-2 w-48 origin-top-right rounded-lg bg-white py-1 shadow-lg ring-1 ring-black/5 dark:bg-gray-800 dark:ring-gray-700"
               >
                 <div class="border-b border-gray-100 px-4 py-2 dark:border-gray-700">
-                  <p class="text-sm font-medium text-gray-900 dark:text-white">John Doe</p>
-                  <p class="text-xs text-gray-500 dark:text-gray-400">john@example.com</p>
+                  <p class="text-sm font-medium text-gray-900 dark:text-white">{{ userName }}</p>
+                  <p class="text-xs text-gray-500 dark:text-gray-400">{{ userEmail }}</p>
                 </div>
                 <router-link
                   to="/profile"
@@ -96,7 +92,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import {
   Bars3Icon,
@@ -116,9 +112,19 @@ const sidebarOpen = ref(false)
 const sidebarCollapsed = ref(false)
 const userMenuOpen = ref(false)
 
-function logout() {
+const userName = computed(() => authStore.user?.name || 'User')
+const userEmail = computed(() => authStore.user?.email || '')
+const userInitials = computed(() => {
+  const name = userName.value
+  const parts = name.split(' ')
+  return parts.length > 1
+    ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+    : name.slice(0, 2).toUpperCase()
+})
+
+async function logout() {
   userMenuOpen.value = false
-  authStore.setAuthenticated(false)
+  await authStore.logout()
   router.push({ name: 'login' })
 }
 

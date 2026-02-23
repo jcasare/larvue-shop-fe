@@ -48,7 +48,8 @@ export const useAuthStore = defineStore("auth", {
     async getUser() {
       try {
         const response = await axios.get("/user");
-        this.setUser(response.data);
+        const user = response.data.data || response.data;
+        this.setUser(user);
       } catch (error) {
         this.setToken(null);
         this.setUser(null);
