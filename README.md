@@ -67,12 +67,27 @@ Add these lines to `/etc/hosts`:
 127.0.0.1  manage.larvue.local
 ```
 
-On macOS:
+**macOS:**
 
 ```bash
 sudo nano /etc/hosts
 # add the lines above, save, then flush DNS:
 sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+```
+
+**Linux:**
+
+```bash
+sudo nano /etc/hosts
+# add the lines above, save. Changes take effect immediately.
+```
+
+**Windows (Run Notepad as Administrator):**
+
+```
+notepad C:\Windows\System32\drivers\etc\hosts
+# add the lines above, save. Then flush DNS:
+ipconfig /flushdns
 ```
 
 **Note:** Vite 7+ blocks requests from unrecognized hostnames by default. The subdomains are already whitelisted in `vite.config.js` via `allowedHosts`. If you add new subdomains, update that list too.
