@@ -52,7 +52,10 @@ src/
 The app detects the hostname at startup (`src/router/portal.js`):
 
 - `manage.*` → loads admin routes, admin auth store, admin layout
-- Everything else → loads shop routes, shop auth store, shop layout
+- `shop.*` or a known bare host (`localhost`, `127.0.0.1`, `larvue.local`) → loads shop routes, shop auth store, shop layout
+- Any other subdomain → shows an "Invalid Subdomain" error page
+
+Known hosts are defined in the `KNOWN_HOSTS` array in `src/router/portal.js`. Add your production domain there when deploying.
 
 Both portals are lazy-loaded, so admin code is never downloaded by shop users and vice versa. Each portal uses its own Pinia auth store with separate sessionStorage keys (`adminToken`/`shopToken`).
 

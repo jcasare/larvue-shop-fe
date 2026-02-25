@@ -4,7 +4,20 @@ import adminRoutes from '@/modules/admin/routes'
 import shopRoutes from '@/modules/shop/routes'
 
 const portal = getPortal()
-const routes = portal === 'admin' ? adminRoutes : shopRoutes
+
+const invalidSubdomainRoutes = [
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'invalid-subdomain',
+    component: () => import('@/shared/views/InvalidSubdomain.vue'),
+  },
+]
+
+const routes = portal === 'admin'
+  ? adminRoutes
+  : portal === 'shop'
+    ? shopRoutes
+    : invalidSubdomainRoutes
 
 const router = createRouter({
   history: createWebHistory(),
@@ -12,6 +25,8 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
+  if (!portal) return next()
+
   let useAuthStore
 
   if (portal === 'admin') {
