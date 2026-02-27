@@ -60,23 +60,23 @@
           <span class="text-sm text-gray-500 dark:text-gray-400">Active filters:</span>
           <span
             v-if="productStore.category"
-            class="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300"
+            class="inline-flex items-center gap-1 rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-teal-700 dark:bg-teal-900/30 dark:text-teal-300"
           >
             {{ productStore.category }}
-            <button @click="handleCategoryChange('')" class="hover:text-indigo-900 dark:hover:text-white">
+            <button @click="handleCategoryChange('')" class="hover:text-teal-900 dark:hover:text-white">
               <XMarkIcon class="h-3 w-3" />
             </button>
           </span>
           <span
             v-if="productStore.minPrice || productStore.maxPrice"
-            class="inline-flex items-center gap-1 rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-700 dark:bg-indigo-900/30 dark:text-indigo-300"
+            class="inline-flex items-center gap-1 rounded-full bg-teal-50 px-3 py-1 text-xs font-medium text-teal-700 dark:bg-teal-900/30 dark:text-teal-300"
           >
             ${{ productStore.minPrice || 0 }} - ${{ productStore.maxPrice || '∞' }}
-            <button @click="productStore.setPriceRange(null, null)" class="hover:text-indigo-900 dark:hover:text-white">
+            <button @click="productStore.setPriceRange(null, null)" class="hover:text-teal-900 dark:hover:text-white">
               <XMarkIcon class="h-3 w-3" />
             </button>
           </span>
-          <button @click="handleReset" class="text-xs font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
+          <button @click="handleReset" class="text-xs font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400">
             Clear all
           </button>
         </div>
@@ -103,7 +103,7 @@
             @click="productStore.setPage(p)"
             class="rounded-lg px-3 py-2 text-sm font-medium"
             :class="p === productStore.page
-              ? 'bg-indigo-600 text-white'
+              ? 'bg-teal-600 text-white'
               : 'text-gray-700 hover:bg-gray-50 dark:text-gray-300 dark:hover:bg-gray-700'"
           >
             {{ p }}

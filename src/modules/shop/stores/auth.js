@@ -72,6 +72,21 @@ export const useAuthStore = defineStore("shopAuth", {
       }
     },
 
+    async googleLogin() {
+      const response = await axios.get("/customer/auth/google/redirect");
+      window.location.href = response.data.url;
+    },
+
+    async handleGoogleCallback(code) {
+      const response = await axios.get("/customer/auth/google/callback", {
+        params: { code },
+      });
+      const token = response.data.access_token;
+      this.setToken(token);
+      await this.getUser();
+      return response;
+    },
+
     async logout() {
       try {
         await axios.post("/customer/logout");

@@ -6,7 +6,7 @@
         <router-link
           to="/products"
           class="shrink-0 rounded-full px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
-          :class="{ 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300': !activeCategory }"
+          :class="{ 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300': !activeCategory }"
         >
           All
         </router-link>
@@ -15,7 +15,7 @@
           :key="cat.id || cat.name"
           :to="{ name: 'products', query: { category: cat.slug || cat.name } }"
           class="shrink-0 rounded-full px-3 py-1.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
-          :class="{ 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300': activeCategory === (cat.slug || cat.name) }"
+          :class="{ 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300': activeCategory === (cat.slug || cat.name) }"
         >
           {{ cat.name }}
         </router-link>

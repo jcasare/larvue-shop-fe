@@ -43,6 +43,12 @@ const shopRoutes = [
     meta: { requiresGuest: true },
   },
   {
+    path: '/auth/google/callback',
+    name: 'google-callback',
+    component: () => import('@/modules/shop/views/GoogleCallback.vue'),
+    meta: { requiresGuest: true },
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: () => import('@/modules/shop/views/NotFound.vue'),

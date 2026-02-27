@@ -28,7 +28,7 @@
           <div class="absolute inset-0 flex items-center">
             <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
               <div class="max-w-lg">
-                <p v-if="slide.tag" class="text-sm font-semibold uppercase tracking-wide text-indigo-400">
+                <p v-if="slide.tag" class="text-sm font-semibold uppercase tracking-wide text-teal-400">
                   {{ slide.tag }}
                 </p>
                 <h2 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
@@ -39,7 +39,7 @@
                 </p>
                 <router-link
                   :to="slide.link || '/products'"
-                  class="mt-6 inline-flex items-center rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-500"
+                  class="mt-6 inline-flex items-center rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500"
                 >
                   {{ slide.cta || 'Shop Now' }}
                   <ArrowRightIcon class="ml-2 h-4 w-4" />

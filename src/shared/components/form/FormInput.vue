@@ -13,7 +13,7 @@
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         required
-        class="block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:border-indigo-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-gray-500 sm:text-sm/6"
+        class="block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:outline-2 focus:-outline-offset-2 focus:outline-teal-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-gray-500 sm:text-sm/6"
       />
     </div>
   </div>

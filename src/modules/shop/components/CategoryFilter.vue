@@ -24,7 +24,7 @@
             :value="cat.slug || cat.name"
             :checked="selectedCategory === (cat.slug || cat.name)"
             @change="$emit('update:category', cat.slug || cat.name)"
-            class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700"
+            class="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500 dark:border-gray-600 dark:bg-gray-700"
           />
           {{ cat.name }}
           <span v-if="cat.product_count" class="ml-auto text-xs text-gray-400">({{ cat.product_count }})</span>
@@ -32,7 +32,7 @@
         <button
           v-if="selectedCategory"
           @click="$emit('update:category', '')"
-          class="text-xs font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
+          class="text-xs font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400"
         >
           Clear category
         </button>
@@ -83,7 +83,7 @@
             v-for="range in priceRanges"
             :key="range.label"
             @click="$emit('update:minPrice', range.min); $emit('update:maxPrice', range.max)"
-            class="rounded-full border border-gray-200 px-2.5 py-1 text-xs text-gray-600 hover:border-indigo-300 hover:text-indigo-600 dark:border-gray-600 dark:text-gray-400 dark:hover:border-indigo-500 dark:hover:text-indigo-400"
+            class="rounded-full border border-gray-200 px-2.5 py-1 text-xs text-gray-600 hover:border-teal-300 hover:text-teal-600 dark:border-gray-600 dark:text-gray-400 dark:hover:border-teal-500 dark:hover:text-teal-400"
           >
             {{ range.label }}
           </button>

@@ -11,7 +11,7 @@
       </p>
       <router-link
         to="/products"
-        class="mt-6 inline-flex items-center rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white hover:bg-indigo-700"
+        class="mt-6 inline-flex items-center rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-700"
       >
         Continue Shopping
       </router-link>
@@ -37,7 +37,7 @@
               <div class="flex justify-between">
                 <div>
                   <h3 class="text-sm font-medium text-gray-900 dark:text-white">
-                    <router-link :to="{ name: 'product-detail', params: { id: item.id } }" class="hover:text-indigo-600 dark:hover:text-indigo-400">
+                    <router-link :to="{ name: 'product-detail', params: { id: item.id } }" class="hover:text-teal-600 dark:hover:text-teal-400">
                       {{ item.name }}
                     </router-link>
                   </h3>
@@ -104,20 +104,20 @@
           </dl>
 
           <!-- Free shipping progress -->
-          <div v-if="cartStore.total < 50" class="mt-4 rounded-lg bg-indigo-50 p-3 dark:bg-indigo-900/20">
-            <p class="text-xs text-indigo-700 dark:text-indigo-300">
+          <div v-if="cartStore.total < 50" class="mt-4 rounded-lg bg-teal-50 p-3 dark:bg-teal-900/20">
+            <p class="text-xs text-teal-700 dark:text-teal-300">
               Add ${{ formatPrice(50 - cartStore.total) }} more for <strong>free shipping</strong>!
             </p>
-            <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-indigo-200 dark:bg-indigo-900">
+            <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-teal-200 dark:bg-teal-900">
               <div
-                class="h-full rounded-full bg-indigo-600"
+                class="h-full rounded-full bg-teal-600"
                 :style="{ width: Math.min(100, (cartStore.total / 50) * 100) + '%' }"
               ></div>
             </div>
           </div>
 
           <button
-            class="mt-6 w-full rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+            class="mt-6 w-full rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
           >
             Proceed to Checkout
           </button>
@@ -125,7 +125,7 @@
           <div class="mt-4 text-center">
             <router-link
               to="/products"
-              class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
+              class="text-sm font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400"
             >
               Continue Shopping <span aria-hidden="true">&rarr;</span>
             </router-link>

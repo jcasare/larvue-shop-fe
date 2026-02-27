@@ -1,11 +1,11 @@
 <template>
-  <div class="min-h-screen flex flex-col bg-white dark:bg-gray-900">
+  <div class="min-h-screen flex flex-col bg-white dark:bg-gray-950">
     <!-- Top promo bar -->
-    <div class="bg-indigo-600 dark:bg-indigo-800">
+    <div class="bg-teal-600 dark:bg-teal-800">
       <div class="mx-auto flex h-9 max-w-7xl items-center justify-center px-4 text-xs font-medium text-white sm:text-sm sm:px-6 lg:px-8">
         <TruckIcon class="mr-1.5 h-4 w-4 hidden sm:block" />
         Free shipping on orders over $50
-        <span class="mx-2 hidden sm:inline text-indigo-300">|</span>
+        <span class="mx-2 hidden sm:inline text-teal-300">|</span>
         <span class="hidden sm:inline">Use code <strong>SAVE10</strong> for 10% off your first order</span>
       </div>
     </div>
@@ -85,13 +85,13 @@
                       <div class="p-4">
                         <router-link
                           to="/login"
-                          class="block w-full rounded-lg bg-indigo-600 py-2 text-center text-sm font-semibold text-white hover:bg-indigo-700"
+                          class="block w-full rounded-lg bg-teal-600 py-2 text-center text-sm font-semibold text-white hover:bg-teal-700"
                         >
                           Sign in
                         </router-link>
                         <p class="mt-3 text-center text-xs text-gray-500 dark:text-gray-400">
                           New customer?
-                          <router-link to="/register" class="font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
+                          <router-link to="/register" class="font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400">
                             Start here
                           </router-link>
                         </p>
@@ -216,7 +216,7 @@
                   <router-link
                     to="/login"
                     @click="mobileMenuOpen = false"
-                    class="block rounded-lg px-3 py-2 text-sm font-medium text-indigo-600 hover:bg-gray-100 dark:text-indigo-400 dark:hover:bg-gray-700"
+                    class="block rounded-lg px-3 py-2 text-sm font-medium text-teal-600 hover:bg-gray-100 dark:text-teal-400 dark:hover:bg-gray-700"
                   >
                     Sign In
                   </router-link>

@@ -7,7 +7,7 @@
     <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Shop by Category</h2>
-        <router-link to="/products" class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
+        <router-link to="/products" class="text-sm font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400">
           View all <span aria-hidden="true">&rarr;</span>
         </router-link>
       </div>
@@ -25,7 +25,7 @@
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
           <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Featured Products</h2>
-          <router-link to="/products" class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400">
+          <router-link to="/products" class="text-sm font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400">
             See all deals <span aria-hidden="true">&rarr;</span>
           </router-link>
         </div>
@@ -52,7 +52,7 @@
         <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">New Arrivals</h2>
         <router-link
           :to="{ name: 'products', query: { sort: 'newest' } }"
-          class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
+          class="text-sm font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400"
         >
           View all <span aria-hidden="true">&rarr;</span>
         </router-link>
@@ -75,7 +75,7 @@
           <h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Trending Now</h2>
           <router-link
             :to="{ name: 'products', query: { sort: 'popular' } }"
-            class="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
+            class="text-sm font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400"
           >
             View all <span aria-hidden="true">&rarr;</span>
           </router-link>

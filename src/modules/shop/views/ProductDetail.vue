@@ -23,7 +23,7 @@
       <p class="mt-2 text-gray-500 dark:text-gray-400">The product you're looking for doesn't exist.</p>
       <router-link
         to="/products"
-        class="mt-6 inline-flex items-center rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white hover:bg-indigo-700"
+        class="mt-6 inline-flex items-center rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white hover:bg-teal-700"
       >
         Browse Products
       </router-link>
@@ -57,7 +57,7 @@
               :key="idx"
               @click="selectedImage = img"
               class="h-20 w-20 shrink-0 overflow-hidden rounded-lg border-2 transition-colors"
-              :class="selectedImage === img ? 'border-indigo-600' : 'border-gray-200 dark:border-gray-700'"
+              :class="selectedImage === img ? 'border-teal-600' : 'border-gray-200 dark:border-gray-700'"
             >
               <img :src="img" :alt="`${product.name} ${idx + 1}`" class="h-full w-full object-cover" />
             </button>
@@ -160,7 +160,7 @@
             <div class="flex gap-3">
               <button
                 @click="handleAddToCart"
-                class="flex-1 rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+                class="flex-1 rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
               >
                 Add to Cart
               </button>

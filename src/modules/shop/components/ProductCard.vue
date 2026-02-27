@@ -22,7 +22,7 @@
     <div class="flex flex-1 flex-col p-4">
       <router-link
         :to="{ name: 'product-detail', params: { id: product.id } }"
-        class="text-sm font-medium text-gray-900 hover:text-indigo-600 dark:text-white dark:hover:text-indigo-400"
+        class="text-sm font-medium text-gray-900 hover:text-teal-600 dark:text-white dark:hover:text-teal-400"
       >
         {{ product.name }}
       </router-link>
@@ -55,7 +55,7 @@
       <!-- Add to cart -->
       <button
         @click="$emit('addToCart', product)"
-        class="mt-3 w-full rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+        class="mt-3 w-full rounded-lg bg-teal-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
       >
         Add to Cart
       </button>

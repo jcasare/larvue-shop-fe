@@ -10,11 +10,11 @@
         @keydown.enter="handleSearch"
         @focus="showSuggestions = true"
         @blur="hideSuggestions"
-        class="w-full rounded-l-lg border border-r-0 border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-indigo-400"
+        class="w-full rounded-l-lg border border-r-0 border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-teal-400"
       />
       <button
         @click="handleSearch"
-        class="flex items-center rounded-r-lg bg-indigo-600 px-4 text-white transition-colors hover:bg-indigo-700"
+        class="flex items-center rounded-r-lg bg-teal-600 px-4 text-white transition-colors hover:bg-teal-700"
       >
         <MagnifyingGlassIcon class="h-5 w-5" />
       </button>
