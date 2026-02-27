@@ -19,6 +19,11 @@ const shopRoutes = [
         component: () => import('@/modules/shop/views/ProductDetail.vue'),
       },
       {
+        path: 'category/:slug',
+        name: 'category',
+        component: () => import('@/modules/shop/views/Products.vue'),
+      },
+      {
         path: 'cart',
         name: 'cart',
         component: () => import('@/modules/shop/views/Cart.vue'),

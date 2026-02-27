@@ -34,10 +34,13 @@ src/
 │   │   ├── stores/             # Admin auth & products stores
 │   │   └── views/              # Dashboard, Products, Orders, etc.
 │   └── shop/                   # Customer portal (shop.*)
+│       ├── api/                # Shop API calls (products, cart)
+│       ├── components/         # Shop components (cards, carousel, filters, etc.)
+│       ├── data/               # Mock data fallback (products, categories, promos)
 │       ├── layouts/            # ShopLayout (navbar + footer)
 │       ├── routes.js           # Shop route definitions
-│       ├── stores/             # Customer auth store
-│       └── views/              # Home, Products, Cart, Login, Register
+│       ├── stores/             # Auth, products & cart stores
+│       └── views/              # Home, Products, ProductDetail, Cart, Login, Register
 ├── shared/                     # Code shared across both portals
 │   ├── components/form/        # FormInput, FormButton
 │   ├── helpers/axios/          # Axios instance with interceptors
@@ -133,11 +136,16 @@ Make sure the Laravel backend (`larvue-shop`) is running on port 8000.
 - Orders, Customers, Analytics, Settings pages (scaffolded)
 
 ### Shop Portal (`shop.*`)
-- Home page with hero section
-- Product listing and detail pages (scaffolded)
-- Shopping cart (scaffolded)
-- Customer login and registration
-- Responsive navbar with cart icon
+- Home page with hero carousel, category preview grid, featured products, promo section, trending products, and newsletter signup
+- Product listing with category/price/sort filters, active filter chips, pagination, and mobile filter drawer
+- Product detail page with image gallery, stock status, quantity selector, expandable info sections, and related products
+- Quick-view modal for products (launched from cards and related items)
+- Shopping cart with quantity controls, order summary, free shipping progress bar, and estimated tax
+- Dual-mode cart: localStorage for guests, synced to backend for authenticated users (auto-merges on login)
+- Customer login and registration with validation error handling
+- Sticky header with search bar (debounced suggestions), account dropdown, cart badge, and mobile drawer
+- Category navigation bar with active state highlighting
+- Mock data fallback when the API is unavailable
 
 ### Shared
 - Light/dark mode (system preference detection)

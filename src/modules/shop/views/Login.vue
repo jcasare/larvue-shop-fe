@@ -32,9 +32,11 @@ import AuthLayout from '@/shared/layouts/AuthLayout.vue'
 import FormInput from '@/shared/components/form/FormInput.vue'
 import FormButton from '@/shared/components/form/FormButton.vue'
 import { useAuthStore } from '@/modules/shop/stores/auth'
+import { useCartStore } from '@/modules/shop/stores/cart'
 
 const router = useRouter()
 const authStore = useAuthStore()
+const cartStore = useCartStore()
 
 const email = ref('')
 const password = ref('')
@@ -46,6 +48,7 @@ async function handleLogin() {
   loading.value = true
   try {
     await authStore.login(email.value, password.value)
+    cartStore.mergeAndSync()
     router.push({ name: 'home' })
   } catch (err) {
     if (err.response?.data?.message) {
