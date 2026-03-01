@@ -31,7 +31,7 @@ src/
 │   │   ├── components/         # Admin-only components (Sidebar)
 │   │   ├── layouts/            # AdminLayout (sidebar + header)
 │   │   ├── routes.js           # Admin route definitions
-│   │   ├── stores/             # Admin auth & products stores
+│   │   ├── stores/             # Admin auth store
 │   │   └── views/              # Dashboard, Products, Orders, etc.
 │   └── shop/                   # Customer portal (shop.*)
 │       ├── api/                # Shop API calls (products, cart)
@@ -43,7 +43,7 @@ src/
 │       └── views/              # Home, Products, ProductDetail, Cart, Login, Register
 ├── shared/                     # Code shared across both portals
 │   ├── components/form/        # FormInput, FormButton
-│   ├── helpers/axios/          # Axios instance with interceptors
+│   ├── helpers/axios/          # Axios instance with cookie-based auth
 │   └── layouts/                # AuthLayout (login/register pages)
 ├── App.vue
 ├── main.js
@@ -60,7 +60,35 @@ The app detects the hostname at startup (`src/router/portal.js`):
 
 Known hosts are defined in the `KNOWN_HOSTS` array in `src/router/portal.js`. Add your production domain there when deploying.
 
-Both portals are lazy-loaded, so admin code is never downloaded by shop users and vice versa. Each portal uses its own Pinia auth store with separate sessionStorage keys (`adminToken`/`shopToken`).
+Both portals are lazy-loaded, so admin code is never downloaded by shop users and vice versa.
+
+## Authentication
+
+The app uses **Sanctum cookie/session-based SPA authentication**. No tokens are stored in JavaScript — the browser manages `httpOnly` session cookies automatically.
+
+### How it works
+
+1. Before login, axios calls `GET /sanctum/csrf-cookie` to get a CSRF token cookie
+2. Login request is sent — Laravel creates a session and responds with an `httpOnly` session cookie
+3. Axios is configured with `withCredentials: true`, so the browser sends the session cookie on every subsequent request
+4. On logout, the session is destroyed server-side
+
+### Why not tokens?
+
+Session cookies are `httpOnly` — JavaScript cannot read them. This means even if an XSS vulnerability exists, an attacker cannot steal the auth credential. With token-based auth, the token lives in `sessionStorage` and is readable by any JavaScript on the page.
+
+### Auth endpoints (unified for all roles)
+
+| Method | Endpoint                    | Description              |
+| ------ | --------------------------- | ------------------------ |
+| POST   | `/api/auth/login`           | Login (all roles)        |
+| POST   | `/api/auth/register`        | Register (customer only) |
+| GET    | `/api/auth/user`            | Get authenticated user   |
+| POST   | `/api/auth/logout`          | Logout (destroy session) |
+| GET    | `/api/auth/google/redirect` | Google OAuth redirect    |
+| GET    | `/api/auth/google/callback` | Google OAuth callback    |
+
+The frontend reads `user.role` from the response to determine portal access and redirects.
 
 ## Getting Started
 
@@ -143,6 +171,7 @@ Make sure the Laravel backend (`larvue-shop`) is running on port 8000.
 - Shopping cart with quantity controls, order summary, free shipping progress bar, and estimated tax
 - Dual-mode cart: localStorage for guests, synced to backend for authenticated users (auto-merges on login)
 - Customer login and registration with validation error handling
+- Google OAuth login
 - Sticky header with search bar (debounced suggestions), account dropdown, cart badge, and mobile drawer
 - Category navigation bar with active state highlighting
 - Mock data fallback when the API is unavailable
@@ -151,7 +180,7 @@ Make sure the Laravel backend (`larvue-shop`) is running on port 8000.
 - Light/dark mode (system preference detection)
 - Reusable form components (FormInput, FormButton)
 - Shared auth layout for login/register pages
-- Centralized Axios instance with token interceptors
+- Centralized Axios instance with cookie-based session auth
 - 404 Not Found pages per portal
 
 ## Scripts

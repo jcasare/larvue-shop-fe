@@ -39,13 +39,13 @@ router.beforeEach(async (to, from, next) => {
 
   const authStore = useAuthStore()
 
-  // If we have a token but no user data, fetch it
-  if (authStore.token && !authStore.user) {
+  // If we have a stored user (from sessionStorage) but haven't
+  // verified the session is still valid with the server, do it now.
+  // If the session cookie expired, getUser() will 401 and clear the user.
+  if (authStore.user && to.matched.some(record => record.meta.requiresAuth)) {
     try {
       await authStore.getUser()
     } catch {
-      authStore.setToken(null)
-      authStore.setUser(null)
       return next({ name: 'login' })
     }
   }
