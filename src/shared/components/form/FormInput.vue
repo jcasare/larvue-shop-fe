@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="flex items-center justify-between">
-      <label :for="id" class="block text-sm/6 font-medium text-gray-700 dark:text-gray-100">{{ label }}</label>
+      <label :for="id" class="block text-xs font-semibold text-ink-light dark:text-ink-muted">{{ label }}</label>
       <slot name="label-end" />
     </div>
-    <div class="mt-2">
+    <div class="mt-1.5">
       <input
         :id="id"
         :type="type"
@@ -13,7 +13,7 @@
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"
         required
-        class="block w-full rounded-md border border-gray-300 bg-white px-3 py-1.5 text-base text-gray-900 placeholder:text-gray-400 focus:border-teal-500 focus:outline-2 focus:-outline-offset-2 focus:outline-teal-500 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-gray-500 sm:text-sm/6"
+        class="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/30 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-border dark:bg-surface dark:text-ink dark:placeholder:text-ink-muted dark:focus:border-white/30 dark:focus:ring-white/10"
       />
     </div>
   </div>

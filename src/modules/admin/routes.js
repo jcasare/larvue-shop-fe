@@ -35,6 +35,11 @@ const adminRoutes = [
         component: () => import('@/modules/admin/views/Analytics.vue'),
       },
       {
+        path: '/categories',
+        name: 'categories',
+        component: () => import('@/modules/admin/views/Categories.vue'),
+      },
+      {
         path: '/settings',
         name: 'settings',
         component: () => import('@/modules/admin/views/Settings.vue'),

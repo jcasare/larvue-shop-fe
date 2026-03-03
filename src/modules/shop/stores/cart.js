@@ -55,6 +55,8 @@ export const useCartStore = defineStore("shopCart", {
         this.items.push({
           id: product.id,
           name: product.name,
+          slug: product.slug || String(product.id),
+          category: product.category || 'shop',
           price: parseFloat(product.price),
           image: product.image_url || product.image,
           quantity,

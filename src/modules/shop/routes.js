@@ -15,8 +15,10 @@ const shopRoutes = [
       },
       {
         path: 'products/:id',
-        name: 'product-detail',
-        component: () => import('@/modules/shop/views/ProductDetail.vue'),
+        name: 'product-detail-legacy',
+        redirect: to => {
+          return { name: 'product-detail', params: { category: 'p', slug: to.params.id } }
+        },
       },
       {
         path: 'category/:slug',
@@ -24,9 +26,32 @@ const shopRoutes = [
         component: () => import('@/modules/shop/views/Products.vue'),
       },
       {
+        path: 'deals',
+        name: 'deals',
+        component: () => import('@/modules/shop/views/Deals.vue'),
+      },
+      {
+        path: 'wishlist',
+        name: 'wishlist',
+        component: () => import('@/modules/shop/views/Wishlist.vue'),
+      },
+      {
+        path: 'account',
+        name: 'account',
+        component: () => import('@/modules/shop/views/Account.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
         path: 'cart',
         name: 'cart',
         component: () => import('@/modules/shop/views/Cart.vue'),
+      },
+      // Product detail with category/slug URL — must be LAST among children
+      // so it doesn't catch routes like /deals, /cart, etc.
+      {
+        path: ':category/:slug',
+        name: 'product-detail',
+        component: () => import('@/modules/shop/views/ProductDetail.vue'),
       },
     ],
   },

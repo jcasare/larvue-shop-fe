@@ -4,19 +4,22 @@ Vue 3 frontend for the Larvue Shop ecommerce platform, built with Vite and Tailw
 
 | Subdomain | Portal | Description |
 | --- | --- | --- |
-| `shop.larvue.local` | Customer Shop | Browse products, cart, login/register |
-| `manage.larvue.local` | Admin Dashboard | Product CRUD, orders, analytics |
+| `shop.larvue.local` or `shop.larvue.localhost` | Customer Shop | Browse products, cart, login/register |
+| `manage.larvue.local` or `manage.larvue.localhost` | Admin Dashboard | Product CRUD, orders, analytics |
+
+> **Note:** `.localhost` subdomains (e.g. `shop.larvue.localhost`) resolve automatically without `/etc/hosts` entries on most systems. Use `.larvue.local` if you prefer explicit host entries.
 
 ## Tech Stack
 
 - **Vue 3** with `<script setup>` SFCs
-- **Vite** for dev server and builds
+- **Vite 7** for dev server and builds
 - **Tailwind CSS v4** for styling
 - **Pinia** for state management
-- **Vue Router** for client-side routing (subdomain-aware)
-- **PrimeVue 4** (Aura theme) for data tables and UI components
+- **Vue Router 4** for client-side routing (subdomain-aware)
+- **PrimeVue 4** (Aura theme) for admin data tables and UI components
 - **Heroicons** for icons
 - **Axios** for HTTP requests
+- **Google Fonts** — Syne (display) + DM Sans (body)
 
 ## Project Structure
 
@@ -38,9 +41,9 @@ src/
 │       ├── components/         # Shop components (cards, carousel, filters, etc.)
 │       ├── data/               # Mock data fallback (products, categories, promos)
 │       ├── layouts/            # ShopLayout (navbar + footer)
-│       ├── routes.js           # Shop route definitions
+│       ├── routes.js           # Shop route definitions (slug-based product URLs)
 │       ├── stores/             # Auth, products & cart stores
-│       └── views/              # Home, Products, ProductDetail, Cart, Login, Register
+│       └── views/              # Home, Products, ProductDetail, Cart, Deals, Wishlist, Account, Login, Register
 ├── shared/                     # Code shared across both portals
 │   ├── components/form/        # FormInput, FormButton
 │   ├── helpers/axios/          # Axios instance with cookie-based auth
@@ -55,7 +58,7 @@ src/
 The app detects the hostname at startup (`src/router/portal.js`):
 
 - `manage.*` → loads admin routes, admin auth store, admin layout
-- `shop.*` or a known bare host (`localhost`, `127.0.0.1`, `larvue.local`) → loads shop routes, shop auth store, shop layout
+- `shop.*` or a known bare host (`localhost`, `127.0.0.1`, `larvue.local`, `larvue.localhost`) → loads shop routes, shop auth store, shop layout
 - Any other subdomain → shows an "Invalid Subdomain" error page
 
 Known hosts are defined in the `KNOWN_HOSTS` array in `src/router/portal.js`. Add your production domain there when deploying.
@@ -68,14 +71,30 @@ The app uses **Sanctum cookie/session-based SPA authentication**. No tokens are 
 
 ### How it works
 
-1. Before login, axios calls `GET /sanctum/csrf-cookie` to get a CSRF token cookie
-2. Login request is sent — Laravel creates a session and responds with an `httpOnly` session cookie
-3. Axios is configured with `withCredentials: true`, so the browser sends the session cookie on every subsequent request
-4. On logout, the session is destroyed server-side
+1. Before login, axios calls `GET /sanctum/csrf-cookie` (on the API subdomain) to get an `XSRF-TOKEN` cookie
+2. Login POST is sent — axios reads the `XSRF-TOKEN` from `document.cookie` and sends it as the `X-XSRF-TOKEN` header
+3. Laravel verifies the CSRF token, authenticates the user, and responds with an `httpOnly` session cookie
+4. All subsequent requests include the session cookie automatically (via `withCredentials: true`)
+5. On logout, the session is destroyed server-side
 
 ### Why not tokens?
 
 Session cookies are `httpOnly` — JavaScript cannot read them. This means even if an XSS vulnerability exists, an attacker cannot steal the auth credential. With token-based auth, the token lives in `sessionStorage` and is readable by any JavaScript on the page.
+
+### Cross-origin cookie sharing
+
+All services must be on the same parent domain (`.larvue.localhost`) for cookies to work:
+
+| Service | URL |
+| --- | --- |
+| API | `http://api.larvue.localhost:8000` |
+| Shop | `http://shop.larvue.localhost:5173` |
+| Admin | `http://manage.larvue.localhost:5173` |
+
+The backend sets cookies with `domain=.larvue.localhost`, so they are shared across all subdomains. The axios instance is configured with:
+
+- **`withCredentials: true`** — tells the browser to send cookies on cross-origin requests
+- **`withXSRFToken: true`** — tells axios to read the `XSRF-TOKEN` cookie and send it as the `X-XSRF-TOKEN` header on cross-origin requests (required since axios 1.6+, which stopped sending XSRF headers cross-origin by default)
 
 ### Auth endpoints (unified for all roles)
 
@@ -93,6 +112,12 @@ The frontend reads `user.role` from the response to determine portal access and 
 ## Getting Started
 
 ### 1. Configure local subdomains
+
+**Option A — Use `.larvue.localhost` (no hosts file needed):**
+
+`.localhost` subdomains resolve to `127.0.0.1` automatically on most operating systems. Just open `http://shop.larvue.localhost:5173` and `http://manage.larvue.localhost:5173`.
+
+**Option B — Use `.larvue.local` (requires hosts file):**
 
 Add these lines to `/etc/hosts`:
 
@@ -124,7 +149,7 @@ notepad C:\Windows\System32\drivers\etc\hosts
 ipconfig /flushdns
 ```
 
-**Note:** Vite 7+ blocks requests from unrecognized hostnames by default. The subdomains are already whitelisted in `vite.config.js` via `allowedHosts`. If you add new subdomains, update that list too.
+**Note:** Vite 7+ blocks requests from unrecognized hostnames by default. The subdomains are already whitelisted in `vite.config.js` via `allowedHosts`. If you add new subdomains, update that list too. Both `.larvue.local` and `.larvue.localhost` variants are whitelisted in the backend CORS and Sanctum configs.
 
 ### 2. Install dependencies
 
@@ -134,13 +159,13 @@ npm install
 
 ### 3. Configure API URL
 
-Create a `.env` file (or update `.env.local`):
+Create a `.env` file:
 
 ```
-VITE_API_BASE_URL=http://api.larvue.local:8000/api
+VITE_API_BASE_URL=http://api.larvue.localhost:8000/api
 ```
 
-Or leave it unset to default to `http://localhost:8000/api`.
+The API URL **must** be on a `.larvue.localhost` subdomain (not plain `localhost`) so that session/CSRF cookies (set with `domain=.larvue.localhost`) are shared between the frontend and API. If you use `http://localhost:8000`, the cookies won't be sent cross-origin and auth will fail with CSRF token mismatch errors.
 
 ### 4. Start development
 
@@ -149,38 +174,45 @@ npm run dev
 ```
 
 Then open:
-- http://shop.larvue.local:5173 — Customer shop
-- http://manage.larvue.local:5173 — Admin dashboard
+- http://shop.larvue.localhost:5173 — Customer shop
+- http://manage.larvue.localhost:5173 — Admin dashboard
 
-Make sure the Laravel backend (`larvue-shop`) is running on port 8000.
+Make sure the Laravel backend (`larvue-shop`) is running on port 8000 (it will be accessible at `http://api.larvue.localhost:8000` automatically since `.localhost` subdomains resolve to `127.0.0.1`).
 
 ## Features
 
 ### Admin Portal (`manage.*`)
 - Authentication (login, forgot/reset password)
 - Collapsible sidebar navigation with mobile responsiveness
-- Products CRUD with server-side pagination, sorting, and search
+- Products CRUD with server-side pagination, sorting, and search (with category and featured fields)
+- Discount management modal per product (add/toggle/delete time-based sale prices)
+- Category management
 - Skeleton loading states on data tables
 - Orders, Customers, Analytics, Settings pages (scaffolded)
 
 ### Shop Portal (`shop.*`)
-- Home page with hero carousel, category preview grid, featured products, promo section, trending products, and newsletter signup
+- **Design system**: Warm Editorial Luxe aesthetic with Syne + DM Sans typography, warm color palette (paper, ink, coral, forest, amber), glassmorphism header, and staggered reveal animations
+- Home page with hero carousel, bento category grid, featured products, promo section, trending products (horizontal scroll), and newsletter signup
 - Product listing with category/price/sort filters, active filter chips, pagination, and mobile filter drawer
 - Product detail page with image gallery, stock status, quantity selector, expandable info sections, and related products
+- Slug-based product URLs (e.g. `/apparel/blue-cotton-tshirt` instead of `/products/123`)
 - Quick-view modal for products (launched from cards and related items)
 - Shopping cart with quantity controls, order summary, free shipping progress bar, and estimated tax
 - Dual-mode cart: localStorage for guests, synced to backend for authenticated users (auto-merges on login)
-- Customer login and registration with validation error handling
-- Google OAuth login
-- Sticky header with search bar (debounced suggestions), account dropdown, cart badge, and mobile drawer
-- Category navigation bar with active state highlighting
+- Deals page with countdown timer and featured deals
+- Wishlist page with recommended products
+- Account page with profile overview, order history, and saved addresses
+- Split-screen login and registration with Google OAuth and validation error handling
+- Sticky glassmorphism header with marquee promo bar, search bar, account dropdown, cart badge, and mobile drawer
+- Category navigation bar with pill-style active states
 - Mock data fallback when the API is unavailable
 
 ### Shared
-- Light/dark mode (system preference detection)
-- Reusable form components (FormInput, FormButton)
-- Shared auth layout for login/register pages
+- Light/dark mode (system preference detection) with custom design tokens
+- Reusable form components (FormInput, FormButton) with consistent styling
 - Centralized Axios instance with cookie-based session auth
+- CSS animations (fade-in-up, slide-up, marquee, shimmer skeletons, float)
+- Custom scrollbar styling
 - 404 Not Found pages per portal
 
 ## Scripts

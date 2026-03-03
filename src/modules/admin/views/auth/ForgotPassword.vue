@@ -1,34 +1,67 @@
 <template>
-  <AuthLayout>
-    <template #header>
-      <h2 class="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">Reset your password</h2>
-      <p class="mt-2 text-center text-sm/6 text-gray-500 dark:text-gray-400">Enter your email address and we'll send you a link to reset your password.</p>
-    </template>
+  <div class="flex min-h-screen items-center justify-center bg-paper px-5 dark:bg-[#080808]">
+    <div class="w-full max-w-[380px] animate-fade-in-up">
+      <div class="text-center">
+        <img src="@/assets/vular-logo.png" alt="Larvue" class="mx-auto h-8 w-auto mb-10 dark:brightness-0 dark:invert dark:opacity-60" />
+        <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/25">Account Recovery</span>
+        <h2 class="mt-1.5 text-2xl font-bold tracking-tight text-ink font-display dark:text-white/90">Reset your password</h2>
+        <p class="mt-2 text-sm text-ink-muted dark:text-white/30">Enter your email and we'll send you a reset link.</p>
+      </div>
 
-    <form class="space-y-6" @submit.prevent="handleSubmit">
-      <FormInput id="email" label="Email address" type="email" autocomplete="email" v-model="email" />
+      <form class="mt-8 space-y-5" @submit.prevent="handleSubmit">
+        <div>
+          <label for="email" class="block text-xs font-medium text-ink-light mb-1.5 dark:text-white/40">Email address</label>
+          <input
+            id="email"
+            v-model="email"
+            type="email"
+            autocomplete="email"
+            required
+            class="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/20 dark:focus:border-white/15 dark:focus:ring-white/10"
+            placeholder="you@company.com"
+          />
+        </div>
 
-      <FormButton>Send reset link</FormButton>
-    </form>
+        <div v-if="success" class="rounded-xl border border-forest/20 bg-forest/5 p-3 text-sm text-forest">
+          Check your inbox for a reset link.
+        </div>
 
-    <p class="mt-10 text-center text-sm/6 text-gray-500 dark:text-gray-400">
-      Remember your password?
-      {{ ' ' }}
-      <router-link :to="{ name: 'login' }" class="font-semibold text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Back to sign in</router-link>
-    </p>
-  </AuthLayout>
+        <div v-if="error" class="rounded-xl border border-coral/20 bg-coral/5 p-3 text-sm text-coral">
+          {{ error }}
+        </div>
+
+        <button
+          type="submit"
+          :disabled="loading"
+          class="flex w-full justify-center rounded-xl bg-ink py-3 text-sm font-semibold text-white transition-all hover:bg-ink/80 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed dark:bg-white dark:text-[#080808] dark:hover:bg-white/90"
+        >
+          {{ loading ? 'Sending...' : 'Send reset link' }}
+        </button>
+      </form>
+
+      <p class="mt-8 text-center text-[13px] text-ink-muted dark:text-white/25">
+        Remember your password?
+        <router-link :to="{ name: 'login' }" class="font-semibold text-coral hover:text-coral-dark transition-colors">Back to sign in</router-link>
+      </p>
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import AuthLayout from '@/shared/layouts/AuthLayout.vue'
-import FormInput from '@/shared/components/form/FormInput.vue'
-import FormButton from '@/shared/components/form/FormButton.vue'
 
 const email = ref('')
+const loading = ref(false)
+const success = ref(false)
+const error = ref('')
 
-const handleSubmit = () => {
+function handleSubmit() {
+  loading.value = true
+  error.value = ''
   // TODO: call forgot password API
-  console.log('Reset link requested for:', email.value)
+  setTimeout(() => {
+    success.value = true
+    loading.value = false
+  }, 1000)
 }
 </script>

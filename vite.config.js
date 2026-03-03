@@ -13,6 +13,6 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    allowedHosts: ['shop.larvue.local', 'manage.larvue.local'],
+    allowedHosts: ['shop.larvue.local', 'manage.larvue.local', 'shop.larvue.localhost', 'manage.larvue.localhost'],
   }
 })

@@ -20,7 +20,7 @@ export const useAuthStore = defineStore("adminAuth", {
 
     async login(email, password, remember) {
       await axios.get("/sanctum/csrf-cookie", {
-        baseURL: import.meta.env.VITE_API_BASE_URL?.replace("/api", "") || "http://localhost:8000",
+        baseURL: import.meta.env.VITE_API_BASE_URL?.replace(/\/api$/, "") || "http://localhost:8000",
       });
 
       const response = await axios.post("/auth/login", {

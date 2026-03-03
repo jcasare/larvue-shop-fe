@@ -22,8 +22,8 @@ export function getProducts({
   });
 }
 
-export function getProduct(id) {
-  return axios.get(`/shop/products/${id}`);
+export function getProduct(idOrSlug) {
+  return axios.get(`/shop/products/${idOrSlug}`);
 }
 
 export function getCategories() {

@@ -1,50 +1,97 @@
 <template>
-  <div class="flex min-h-screen bg-gray-50 dark:bg-gray-950">
+  <div class="flex min-h-screen bg-paper dark:bg-[#0A0A0A]">
     <!-- Left brand panel (desktop only) -->
-    <div class="relative hidden overflow-hidden lg:flex lg:w-[55%] lg:flex-col lg:justify-end p-8 pb-10 text-white">
+    <div class="relative hidden overflow-hidden lg:flex lg:w-[55%] lg:flex-col lg:justify-between p-10 text-white">
       <!-- Background image -->
       <img
-        src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&q=80"
+        src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=1200&q=80"
         alt=""
         class="absolute inset-0 h-full w-full object-cover"
       />
-      <!-- Strong overlay for readability -->
-      <div class="absolute inset-0 bg-gradient-to-t from-gray-950/95 via-gray-900/80 to-teal-900/60 register-overlay"></div>
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40"></div>
 
-      <!-- Floating animated shapes -->
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="register-float-1 absolute right-[10%] top-[15%] h-44 w-44 rounded-full bg-white/5"></div>
-        <div class="register-float-2 absolute bottom-[35%] left-[8%] h-32 w-32 rounded-full bg-teal-400/10"></div>
-        <div class="register-float-3 absolute right-[25%] top-[45%] h-20 w-20 rounded-full bg-white/5"></div>
-      </div>
+      <!-- Grain texture -->
+      <div class="absolute inset-0 opacity-[0.03] mix-blend-overlay" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')"></div>
 
-      <!-- Logo pinned top -->
-      <div class="absolute left-8 top-8 z-10">
+      <!-- Decorative orbs -->
+      <div class="absolute top-[20%] left-[10%] h-48 w-48 rounded-full bg-forest/15 blur-[80px]"></div>
+      <div class="absolute bottom-[25%] right-[8%] h-36 w-36 rounded-full bg-white/5 blur-[60px]"></div>
+
+      <!-- Logo top -->
+      <div class="relative z-10">
         <img src="@/assets/vular-logo.png" alt="Larvue Shop" class="h-9 w-auto brightness-0 invert" />
       </div>
 
-      <!-- Copyright anchored to bottom -->
-      <p class="relative z-10 text-xs text-white/40">&copy; {{ new Date().getFullYear() }} Larvue Shop. All rights reserved.</p>
+      <!-- Benefits bottom -->
+      <div class="relative z-10">
+        <h3 class="text-xl font-bold text-white/90 font-display">Join 50,000+ happy shoppers</h3>
+        <ul class="mt-5 space-y-3">
+          <li class="flex items-center gap-3 text-sm text-white/60">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-white/10">
+              <svg class="h-3.5 w-3.5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            </span>
+            Exclusive member-only deals
+          </li>
+          <li class="flex items-center gap-3 text-sm text-white/60">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-white/10">
+              <svg class="h-3.5 w-3.5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            </span>
+            Early access to new arrivals
+          </li>
+          <li class="flex items-center gap-3 text-sm text-white/60">
+            <span class="flex h-6 w-6 items-center justify-center rounded-full bg-white/10">
+              <svg class="h-3.5 w-3.5 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+            </span>
+            Free shipping on your first order
+          </li>
+        </ul>
+        <p class="mt-8 text-[11px] text-white/20">&copy; {{ new Date().getFullYear() }} Larvue Shop. All rights reserved.</p>
+      </div>
     </div>
 
     <!-- Right form panel -->
-    <div class="flex w-full flex-1 flex-col items-center justify-center px-5 py-6 lg:w-[45%] lg:px-10">
-      <div class="w-full max-w-[360px]">
-        <img src="@/assets/vular-logo.png" alt="Larvue Shop" class="h-10 w-auto" />
+    <div class="flex w-full flex-1 flex-col px-5 py-8 lg:w-[45%] lg:px-12">
+      <!-- Back to shop -->
+      <div class="flex justify-end mb-4">
+        <router-link
+          to="/"
+          class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+        >
+          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+          Back to shop
+        </router-link>
+      </div>
 
-        <h2 class="mt-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-2xl">
-          Create your account
-        </h2>
-        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Already have an account?
-          <router-link :to="{ name: 'login' }" class="font-semibold text-teal-600 hover:text-teal-500 dark:text-teal-400">Sign in</router-link>
-        </p>
+      <div class="flex flex-1 flex-col items-center justify-center">
+      <div class="w-full max-w-[380px] animate-fade-in-up">
+        <!-- Mobile logo -->
+        <img src="@/assets/vular-logo.png" alt="Larvue Shop" class="h-9 w-auto lg:hidden" />
+
+        <div class="lg:mt-0 mt-8">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted">Get started</span>
+          <h2 class="mt-1 text-2xl font-bold tracking-tight text-ink lg:text-3xl font-display dark:text-ink">
+            Create account
+          </h2>
+          <p class="mt-2 text-sm text-ink-muted">
+            Already have an account?
+            <router-link :to="{ name: 'login' }" class="font-semibold text-coral hover:text-coral-dark transition-colors">Sign in</router-link>
+          </p>
+        </div>
 
         <!-- Google sign up -->
         <button
           @click="handleGoogleSignup"
           :disabled="googleLoading"
-          class="mt-5 flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+          class="mt-6 flex w-full items-center justify-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 text-sm font-medium text-ink transition-all hover:bg-ink/[0.03] hover:border-ink/20 dark:border-border dark:bg-surface dark:text-ink dark:hover:bg-white/5 dark:hover:border-white/20"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
@@ -56,30 +103,37 @@
         </button>
 
         <!-- Divider -->
-        <div class="relative my-4">
+        <div class="relative my-6">
           <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+            <div class="w-full border-t border-border dark:border-border"></div>
           </div>
-          <div class="relative flex justify-center text-sm">
-            <span class="bg-gray-50 px-3 text-gray-500 dark:bg-gray-950 dark:text-gray-400">or sign up with email</span>
+          <div class="relative flex justify-center">
+            <span class="bg-paper px-3 text-xs text-ink-muted dark:bg-[#0A0A0A]">or sign up with email</span>
           </div>
         </div>
 
         <!-- Registration form -->
-        <form class="space-y-3.5" @submit.prevent="handleRegister">
+        <form class="space-y-4" @submit.prevent="handleRegister">
           <FormInput id="name" v-model="name" label="Full name" type="text" autocomplete="name" />
           <FormInput id="email" v-model="email" label="Email address" type="email" autocomplete="email" />
           <FormInput id="password" v-model="password" label="Password" type="password" autocomplete="new-password" />
           <FormInput id="password_confirmation" v-model="passwordConfirmation" label="Confirm password" type="password" autocomplete="new-password" />
 
-          <div v-if="error" class="rounded-md bg-red-50 p-3 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">
+          <div v-if="error" class="rounded-xl bg-coral/5 border border-coral/10 p-3 text-sm text-coral dark:bg-coral/10">
             {{ error }}
           </div>
 
           <FormButton :disabled="loading">
             {{ loading ? 'Creating account...' : 'Create account' }}
           </FormButton>
+
+          <p class="text-[11px] text-center text-ink-muted leading-relaxed">
+            By creating an account, you agree to our
+            <a href="#" class="underline hover:text-ink transition-colors dark:hover:text-ink">Terms</a> and
+            <a href="#" class="underline hover:text-ink transition-colors dark:hover:text-ink">Privacy Policy</a>.
+          </p>
         </form>
+      </div>
       </div>
     </div>
   </div>
@@ -137,37 +191,3 @@ async function handleGoogleSignup() {
   }
 }
 </script>
-
-<style scoped>
-.register-overlay {
-  animation: overlay-shift 8s ease-in-out infinite alternate;
-}
-
-@keyframes overlay-shift {
-  0% { opacity: 0.85; }
-  100% { opacity: 0.92; }
-}
-
-.register-float-1 {
-  animation: float-1 6s ease-in-out infinite;
-}
-.register-float-2 {
-  animation: float-2 8s ease-in-out infinite;
-}
-.register-float-3 {
-  animation: float-3 7s ease-in-out infinite;
-}
-
-@keyframes float-1 {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.05); }
-}
-@keyframes float-2 {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(15px) translateX(10px); }
-}
-@keyframes float-3 {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-12px) scale(0.95); }
-}
-</style>

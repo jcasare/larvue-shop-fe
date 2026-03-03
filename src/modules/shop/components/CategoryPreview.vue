@@ -1,26 +1,28 @@
 <template>
   <router-link
     :to="{ name: 'products', query: { category: category.slug || category.name } }"
-    class="group relative block overflow-hidden rounded-lg"
+    class="group relative block overflow-hidden rounded-2xl"
   >
-    <div class="aspect-[3/2] overflow-hidden bg-gray-100 dark:bg-gray-700">
+    <div class="aspect-[4/3] overflow-hidden bg-border-light dark:bg-[#1A1A1A]">
       <img
-        :src="category.image || `https://placehold.co/600x400/e2e8f0/64748b?text=${encodeURIComponent(category.name)}`"
+        :src="category.image || `https://placehold.co/600x400/F2EFEA/A09B94?text=${encodeURIComponent(category.name)}`"
         :alt="category.name"
-        class="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
+        class="h-full w-full object-cover object-center transition-all duration-700 group-hover:scale-110"
       />
     </div>
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/70 via-gray-900/20 to-transparent">
-      <div class="absolute bottom-0 left-0 right-0 p-4">
-        <h3 class="text-lg font-bold text-white">{{ category.name }}</h3>
-        <p v-if="category.product_count" class="mt-0.5 text-sm text-gray-200">
-          {{ category.product_count }} products
-        </p>
-        <span class="mt-2 inline-flex items-center text-sm font-medium text-white group-hover:underline">
-          Shop now
-          <ArrowRightIcon class="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </span>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent transition-all duration-300 group-hover:from-ink/90">
+      <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
+        <h3 class="text-base font-bold text-white font-display sm:text-lg">{{ category.name }}</h3>
+        <div class="flex items-center justify-between mt-1.5">
+          <p v-if="category.product_count" class="text-xs text-white/60">
+            {{ category.product_count }} items
+          </p>
+          <span class="inline-flex items-center gap-1 text-xs font-medium text-white/80 opacity-0 translate-x-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0">
+            Explore
+            <ArrowRightIcon class="h-3 w-3" />
+          </span>
+        </div>
       </div>
     </div>
   </router-link>

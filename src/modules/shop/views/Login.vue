@@ -1,50 +1,82 @@
 <template>
-  <div class="flex min-h-screen bg-gray-50 dark:bg-gray-950">
+  <div class="flex min-h-screen bg-paper dark:bg-[#0A0A0A]">
     <!-- Left brand panel (desktop only) -->
-    <div class="relative hidden overflow-hidden lg:flex lg:w-[55%] lg:flex-col lg:justify-end p-8 pb-10 text-white">
+    <div class="relative hidden overflow-hidden lg:flex lg:w-[55%] lg:flex-col lg:justify-between p-10 text-white">
       <!-- Background image -->
       <img
-        src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=1200&q=80"
+        src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1200&q=80"
         alt=""
         class="absolute inset-0 h-full w-full object-cover"
       />
-      <!-- Strong overlay for readability -->
-      <div class="absolute inset-0 bg-gradient-to-t from-gray-950/95 via-gray-900/80 to-teal-900/60 login-overlay"></div>
+      <!-- Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40"></div>
 
-      <!-- Floating animated shapes -->
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="login-float-1 absolute right-[10%] top-[15%] h-44 w-44 rounded-full bg-white/5"></div>
-        <div class="login-float-2 absolute bottom-[35%] left-[8%] h-32 w-32 rounded-full bg-teal-400/10"></div>
-        <div class="login-float-3 absolute right-[25%] top-[45%] h-20 w-20 rounded-full bg-white/5"></div>
-      </div>
+      <!-- Grain texture -->
+      <div class="absolute inset-0 opacity-[0.03] mix-blend-overlay" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')"></div>
 
-      <!-- Logo pinned top -->
-      <div class="absolute left-8 top-8 z-10">
+      <!-- Decorative orbs -->
+      <div class="absolute top-[15%] right-[10%] h-48 w-48 rounded-full bg-coral/15 blur-[80px]"></div>
+      <div class="absolute bottom-[30%] left-[5%] h-36 w-36 rounded-full bg-white/5 blur-[60px]"></div>
+
+      <!-- Logo top -->
+      <div class="relative z-10">
         <img src="@/assets/vular-logo.png" alt="Larvue Shop" class="h-9 w-auto brightness-0 invert" />
       </div>
 
-      <!-- Copyright anchored to bottom -->
-      <p class="relative z-10 text-xs text-white/40">&copy; {{ new Date().getFullYear() }} Larvue Shop. All rights reserved.</p>
+      <!-- Testimonial / tagline bottom -->
+      <div class="relative z-10">
+        <blockquote class="max-w-sm">
+          <p class="text-lg font-medium text-white/80 leading-relaxed font-display">
+            "The best shopping experience I've ever had online. Curated, beautiful, fast."
+          </p>
+          <footer class="mt-4 flex items-center gap-3">
+            <div class="h-8 w-8 rounded-full bg-white/20"></div>
+            <div>
+              <p class="text-sm font-medium text-white/80">Sarah J.</p>
+              <p class="text-xs text-white/40">Verified Buyer</p>
+            </div>
+          </footer>
+        </blockquote>
+        <p class="mt-8 text-[11px] text-white/20">&copy; {{ new Date().getFullYear() }} Larvue Shop. All rights reserved.</p>
+      </div>
     </div>
 
     <!-- Right form panel -->
-    <div class="flex w-full flex-1 flex-col items-center justify-center px-5 py-6 lg:w-[45%] lg:px-10">
-      <div class="w-full max-w-[360px]">
-        <img src="@/assets/vular-logo.png" alt="Larvue Shop" class="h-10 w-auto" />
+    <div class="flex w-full flex-1 flex-col px-5 py-8 lg:w-[45%] lg:px-12">
+      <!-- Back to shop -->
+      <div class="flex justify-end mb-4">
+        <router-link
+          to="/"
+          class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+        >
+          <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+          </svg>
+          Back to shop
+        </router-link>
+      </div>
 
-        <h2 class="mt-5 text-xl font-bold tracking-tight text-gray-900 dark:text-white lg:text-2xl">
-          Sign in to your account
-        </h2>
-        <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">
-          Don't have an account?
-          <router-link :to="{ name: 'register' }" class="font-semibold text-teal-600 hover:text-teal-500 dark:text-teal-400">Create one</router-link>
-        </p>
+      <div class="flex flex-1 flex-col items-center justify-center">
+      <div class="w-full max-w-[380px] animate-fade-in-up">
+        <!-- Mobile logo -->
+        <img src="@/assets/vular-logo.png" alt="Larvue Shop" class="h-9 w-auto lg:hidden" />
+
+        <div class="lg:mt-0 mt-8">
+          <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted">Welcome back</span>
+          <h2 class="mt-1 text-2xl font-bold tracking-tight text-ink lg:text-3xl font-display dark:text-ink">
+            Sign in
+          </h2>
+          <p class="mt-2 text-sm text-ink-muted">
+            Don't have an account?
+            <router-link :to="{ name: 'register' }" class="font-semibold text-coral hover:text-coral-dark transition-colors">Create one</router-link>
+          </p>
+        </div>
 
         <!-- Google login -->
         <button
           @click="handleGoogleLogin"
           :disabled="googleLoading"
-          class="mt-5 flex w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+          class="mt-6 flex w-full items-center justify-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 text-sm font-medium text-ink transition-all hover:bg-ink/[0.03] hover:border-ink/20 dark:border-border dark:bg-surface dark:text-ink dark:hover:bg-white/5 dark:hover:border-white/20"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
@@ -56,33 +88,33 @@
         </button>
 
         <!-- Divider -->
-        <div class="relative my-4">
+        <div class="relative my-6">
           <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-gray-200 dark:border-gray-700"></div>
+            <div class="w-full border-t border-border dark:border-border"></div>
           </div>
-          <div class="relative flex justify-center text-sm">
-            <span class="bg-gray-50 px-3 text-gray-500 dark:bg-gray-950 dark:text-gray-400">or sign in with email</span>
+          <div class="relative flex justify-center">
+            <span class="bg-paper px-3 text-xs text-ink-muted dark:bg-[#0A0A0A]">or sign in with email</span>
           </div>
         </div>
 
         <!-- Email/password form -->
-        <form class="space-y-3.5" @submit.prevent="handleLogin">
+        <form class="space-y-4" @submit.prevent="handleLogin">
           <FormInput id="email" v-model="email" label="Email address" type="email" autocomplete="email" />
           <FormInput id="password" v-model="password" label="Password" type="password" autocomplete="current-password" />
 
           <div class="flex items-center justify-between">
-            <label class="flex items-center gap-2">
+            <label class="flex items-center gap-2 cursor-pointer">
               <input
                 v-model="remember"
                 type="checkbox"
-                class="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500 dark:border-gray-600 dark:bg-gray-700"
+                class="h-4 w-4 rounded border-border text-ink focus:ring-ink/20 dark:border-border dark:bg-surface"
               />
-              <span class="text-sm text-gray-600 dark:text-gray-400">Remember me</span>
+              <span class="text-xs text-ink-muted">Remember me</span>
             </label>
-            <a href="#" class="text-sm font-medium text-teal-600 hover:text-teal-500 dark:text-teal-400">Forgot password?</a>
+            <a href="#" class="text-xs font-semibold text-coral hover:text-coral-dark transition-colors">Forgot password?</a>
           </div>
 
-          <div v-if="error" class="rounded-md bg-red-50 p-3 text-sm text-red-600 dark:bg-red-500/10 dark:text-red-400">
+          <div v-if="error" class="rounded-xl bg-coral/5 border border-coral/10 p-3 text-sm text-coral dark:bg-coral/10">
             {{ error }}
           </div>
 
@@ -90,6 +122,7 @@
             {{ loading ? 'Signing in...' : 'Sign in' }}
           </FormButton>
         </form>
+      </div>
       </div>
     </div>
   </div>
@@ -145,37 +178,3 @@ async function handleGoogleLogin() {
   }
 }
 </script>
-
-<style scoped>
-.login-overlay {
-  animation: overlay-shift 8s ease-in-out infinite alternate;
-}
-
-@keyframes overlay-shift {
-  0% { opacity: 0.85; }
-  100% { opacity: 0.92; }
-}
-
-.login-float-1 {
-  animation: float-1 6s ease-in-out infinite;
-}
-.login-float-2 {
-  animation: float-2 8s ease-in-out infinite;
-}
-.login-float-3 {
-  animation: float-3 7s ease-in-out infinite;
-}
-
-@keyframes float-1 {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-20px) scale(1.05); }
-}
-@keyframes float-2 {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  50% { transform: translateY(15px) translateX(10px); }
-}
-@keyframes float-3 {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-12px) scale(0.95); }
-}
-</style>

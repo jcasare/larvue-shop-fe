@@ -133,10 +133,10 @@ export const useProductStore = defineStore("shopProducts", {
       }
     },
 
-    async fetchProduct(id) {
+    async fetchProduct(idOrSlug) {
       this.loading = true;
       try {
-        const response = await getProduct(id);
+        const response = await getProduct(idOrSlug);
         const data = response.data.data ?? response.data;
         this.currentProduct = data && Object.keys(data).length > 0 ? data : null;
       } catch {
@@ -145,7 +145,9 @@ export const useProductStore = defineStore("shopProducts", {
       // Fallback to mock if not found from API
       if (!this.currentProduct) {
         this.currentProduct =
-          mockData.products.find((p) => p.id === Number(id)) || null;
+          mockData.products.find(
+            (p) => p.slug === idOrSlug || p.id === Number(idOrSlug)
+          ) || null;
       }
       this.loading = false;
       return this.currentProduct;

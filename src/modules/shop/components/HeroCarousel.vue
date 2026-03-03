@@ -1,12 +1,15 @@
 <template>
-  <div class="relative overflow-hidden bg-gray-900">
+  <div class="relative overflow-hidden bg-ink dark:bg-[#0A0A0A]">
+    <!-- Subtle grain overlay -->
+    <div class="absolute inset-0 opacity-[0.03] mix-blend-overlay" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')"></div>
+
     <!-- Slides -->
-    <div class="relative h-[400px] sm:h-[480px] lg:h-[560px]">
+    <div class="relative h-[420px] sm:h-[500px] lg:h-[600px]">
       <TransitionGroup
-        enter-active-class="transition-opacity duration-700 ease-in-out"
-        enter-from-class="opacity-0"
-        enter-to-class="opacity-100"
-        leave-active-class="transition-opacity duration-700 ease-in-out absolute inset-0"
+        enter-active-class="transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        enter-from-class="opacity-0 scale-[1.02]"
+        enter-to-class="opacity-100 scale-100"
+        leave-active-class="transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] absolute inset-0"
         leave-from-class="opacity-100"
         leave-to-class="opacity-0"
       >
@@ -23,27 +26,38 @@
             class="h-full w-full object-cover"
           />
           <!-- Gradient overlay -->
-          <div class="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/50 to-transparent"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/20"></div>
           <!-- Content -->
           <div class="absolute inset-0 flex items-center">
             <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-              <div class="max-w-lg">
-                <p v-if="slide.tag" class="text-sm font-semibold uppercase tracking-wide text-teal-400">
+              <div class="max-w-xl">
+                <span
+                  v-if="slide.tag"
+                  class="inline-flex items-center rounded-full border border-white/20 px-3.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-white/80"
+                >
                   {{ slide.tag }}
-                </p>
-                <h2 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
+                </span>
+                <h2 class="mt-4 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl font-display leading-[1.1]">
                   {{ slide.title }}
                 </h2>
-                <p class="mt-4 text-lg text-gray-300">
+                <p class="mt-5 text-base leading-relaxed text-white/60 max-w-md">
                   {{ slide.description }}
                 </p>
-                <router-link
-                  :to="slide.link || '/products'"
-                  class="mt-6 inline-flex items-center rounded-lg bg-teal-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-teal-500"
-                >
-                  {{ slide.cta || 'Shop Now' }}
-                  <ArrowRightIcon class="ml-2 h-4 w-4" />
-                </router-link>
+                <div class="mt-8 flex items-center gap-4">
+                  <router-link
+                    :to="slide.link || '/products'"
+                    class="inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-all hover:bg-white/90 active:scale-[0.98]"
+                  >
+                    {{ slide.cta || 'Shop Now' }}
+                    <ArrowRightIcon class="h-4 w-4" />
+                  </router-link>
+                  <router-link
+                    to="/products"
+                    class="inline-flex items-center gap-2 text-sm font-medium text-white/70 hover:text-white transition-colors"
+                  >
+                    Browse all
+                  </router-link>
+                </div>
               </div>
             </div>
           </div>
@@ -51,29 +65,37 @@
       </TransitionGroup>
     </div>
 
-    <!-- Navigation arrows -->
-    <button
-      @click="prevSlide"
-      class="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
-    >
-      <ChevronLeftIcon class="h-6 w-6" />
-    </button>
-    <button
-      @click="nextSlide"
-      class="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-colors hover:bg-white/30"
-    >
-      <ChevronRightIcon class="h-6 w-6" />
-    </button>
-
-    <!-- Dots -->
-    <div class="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2">
+    <!-- Navigation -->
+    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 sm:bottom-8">
       <button
-        v-for="(_, index) in slides"
-        :key="index"
-        @click="currentSlide = index"
-        class="h-2 rounded-full transition-all"
-        :class="currentSlide === index ? 'w-8 bg-white' : 'w-2 bg-white/50 hover:bg-white/75'"
-      ></button>
+        @click="prevSlide"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+      >
+        <ChevronLeftIcon class="h-4 w-4" />
+      </button>
+      <!-- Progress dots -->
+      <div class="flex items-center gap-2">
+        <button
+          v-for="(_, index) in slides"
+          :key="index"
+          @click="goToSlide(index)"
+          class="relative h-1.5 rounded-full transition-all duration-500"
+          :class="currentSlide === index ? 'w-8 bg-white' : 'w-1.5 bg-white/30 hover:bg-white/50'"
+        ></button>
+      </div>
+      <button
+        @click="nextSlide"
+        class="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/60 transition-colors hover:bg-white/10 hover:text-white"
+      >
+        <ChevronRightIcon class="h-4 w-4" />
+      </button>
+    </div>
+
+    <!-- Slide counter -->
+    <div class="absolute top-6 right-6 text-xs font-medium text-white/40 sm:top-8 sm:right-8">
+      <span class="text-white font-semibold">{{ String(currentSlide + 1).padStart(2, '0') }}</span>
+      <span class="mx-1">/</span>
+      <span>{{ String(slides.length).padStart(2, '0') }}</span>
     </div>
   </div>
 </template>
@@ -100,8 +122,18 @@ function prevSlide() {
   currentSlide.value = (currentSlide.value - 1 + props.slides.length) % props.slides.length;
 }
 
+function goToSlide(index) {
+  currentSlide.value = index;
+  resetInterval();
+}
+
+function resetInterval() {
+  clearInterval(interval);
+  interval = setInterval(nextSlide, 6000);
+}
+
 onMounted(() => {
-  interval = setInterval(nextSlide, 5000);
+  interval = setInterval(nextSlide, 6000);
 });
 
 onUnmounted(() => {

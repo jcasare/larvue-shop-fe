@@ -25,7 +25,7 @@ export const useAuthStore = defineStore("shopAuth", {
       // header on subsequent requests (POST, PUT, PATCH, DELETE).
       // Without this, Laravel rejects mutations with a 419 status.
       await axios.get("/sanctum/csrf-cookie", {
-        baseURL: import.meta.env.VITE_API_BASE_URL?.replace("/api", "") || "http://localhost:8000",
+        baseURL: import.meta.env.VITE_API_BASE_URL?.replace(/\/api$/, "") || "http://localhost:8000",
       });
 
       // Step 2: Login — Laravel starts a session and sends back
@@ -40,7 +40,7 @@ export const useAuthStore = defineStore("shopAuth", {
 
     async register(name, email, password, passwordConfirmation) {
       await axios.get("/sanctum/csrf-cookie", {
-        baseURL: import.meta.env.VITE_API_BASE_URL?.replace("/api", "") || "http://localhost:8000",
+        baseURL: import.meta.env.VITE_API_BASE_URL?.replace(/\/api$/, "") || "http://localhost:8000",
       });
 
       const response = await axios.post("/auth/register", {
@@ -71,7 +71,7 @@ export const useAuthStore = defineStore("shopAuth", {
 
     async handleGoogleCallback(code) {
       await axios.get("/sanctum/csrf-cookie", {
-        baseURL: import.meta.env.VITE_API_BASE_URL?.replace("/api", "") || "http://localhost:8000",
+        baseURL: import.meta.env.VITE_API_BASE_URL?.replace(/\/api$/, "") || "http://localhost:8000",
       });
 
       const response = await axios.get("/auth/google/callback", {
