@@ -2,11 +2,11 @@
   <div>
     <!-- Welcome -->
     <div class="animate-fade-in-up">
-      <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/25">Overview</span>
+      <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/40">Overview</span>
       <h1 class="mt-1 text-2xl font-bold tracking-tight text-ink font-display dark:text-white/90">
         Welcome back, {{ userName }}
       </h1>
-      <p class="mt-1 text-sm text-ink-muted dark:text-white/30">Here's what's happening with your store today.</p>
+      <p class="mt-1 text-sm text-ink-muted dark:text-white/50">Here's what's happening with your store today.</p>
     </div>
 
     <!-- Stat cards -->
@@ -18,7 +18,7 @@
         :style="{ animationDelay: `${i * 0.05}s` }"
       >
         <div class="flex items-center justify-between">
-          <span class="text-[11px] font-semibold uppercase tracking-wider text-ink-muted dark:text-white/30">{{ stat.label }}</span>
+          <span class="text-[11px] font-semibold uppercase tracking-wider text-ink-muted dark:text-white/50">{{ stat.label }}</span>
           <div :class="['flex h-8 w-8 items-center justify-center rounded-lg', stat.iconBg]">
             <component :is="stat.icon" class="h-4 w-4" :class="stat.iconColor" />
           </div>
@@ -28,7 +28,7 @@
           <span :class="['text-[11px] font-semibold', stat.changePositive ? 'text-forest' : 'text-coral']">
             {{ stat.changePositive ? '+' : '' }}{{ stat.change }}
           </span>
-          <span class="text-[11px] text-ink-muted dark:text-white/25">vs last month</span>
+          <span class="text-[11px] text-ink-muted dark:text-white/40">vs last month</span>
         </div>
       </div>
     </div>
@@ -43,9 +43,9 @@
         </div>
 
         <div v-if="recentOrders.length === 0" class="py-12 text-center">
-          <ClipboardDocumentListIcon class="mx-auto h-8 w-8 text-ink-muted/50 dark:text-white/10" />
-          <p class="mt-3 text-sm text-ink-muted dark:text-white/25">No orders yet</p>
-          <p class="mt-1 text-[11px] text-ink-muted/70 dark:text-white/15">Orders will appear here once customers start purchasing.</p>
+          <ClipboardDocumentListIcon class="mx-auto h-8 w-8 text-ink-muted/50 dark:text-white/50" />
+          <p class="mt-3 text-sm text-ink-muted dark:text-white/40">No orders yet</p>
+          <p class="mt-1 text-[11px] text-ink-muted/70 dark:text-white/45">Orders will appear here once customers start purchasing.</p>
         </div>
 
         <div v-else class="space-y-3">
@@ -60,7 +60,7 @@
               </div>
               <div>
                 <p class="text-[13px] font-medium text-ink dark:text-white/80">{{ order.customer }}</p>
-                <p class="text-[11px] text-ink-muted dark:text-white/25">{{ order.items }} items</p>
+                <p class="text-[11px] text-ink-muted dark:text-white/40">{{ order.items }} items</p>
               </div>
             </div>
             <div class="text-right">
@@ -78,8 +78,8 @@
         <h2 class="text-sm font-bold text-ink font-display mb-5 dark:text-white/80">Activity</h2>
 
         <div v-if="activities.length === 0" class="py-12 text-center">
-          <ChartBarIcon class="mx-auto h-8 w-8 text-ink-muted/50 dark:text-white/10" />
-          <p class="mt-3 text-sm text-ink-muted dark:text-white/25">No activity yet</p>
+          <ChartBarIcon class="mx-auto h-8 w-8 text-ink-muted/50 dark:text-white/50" />
+          <p class="mt-3 text-sm text-ink-muted dark:text-white/40">No activity yet</p>
         </div>
 
         <div v-else class="space-y-4">
@@ -90,7 +90,7 @@
             </div>
             <div class="pb-4">
               <p class="text-[13px] text-ink dark:text-white/70">{{ activity.text }}</p>
-              <p class="mt-0.5 text-[11px] text-ink-muted dark:text-white/20">{{ activity.time }}</p>
+              <p class="mt-0.5 text-[11px] text-ink-muted dark:text-white/50">{{ activity.time }}</p>
             </div>
           </div>
         </div>
@@ -106,7 +106,7 @@
         class="group flex flex-col items-center gap-2.5 rounded-2xl border border-border bg-surface p-5 transition-all hover:border-coral/30 hover:shadow-lg hover:shadow-coral/[0.03] dark:border-white/[0.06] dark:bg-white/[0.02] dark:hover:border-coral/20"
       >
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink/5 transition-colors group-hover:bg-coral/10 dark:bg-white/[0.04] dark:group-hover:bg-coral/10">
-          <component :is="action.icon" class="h-5 w-5 text-ink-muted transition-colors group-hover:text-coral dark:text-white/30 dark:group-hover:text-coral" />
+          <component :is="action.icon" class="h-5 w-5 text-ink-muted transition-colors group-hover:text-coral dark:text-white/50 dark:group-hover:text-coral" />
         </div>
         <span class="text-[12px] font-semibold text-ink-light group-hover:text-ink transition-colors dark:text-white/40 dark:group-hover:text-white/70">{{ action.label }}</span>
       </router-link>

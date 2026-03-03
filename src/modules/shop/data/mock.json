@@ -403,28 +403,28 @@
   ],
   "heroSlides": [
     {
-      "title": "New Season Arrivals",
-      "description": "Discover the latest trends with our curated collection of premium products at unbeatable prices.",
+      "title": "The New Standard in Style",
+      "description": "Curated essentials for the modern lifestyle. Premium quality, timeless design.",
       "tag": "New Collection",
-      "cta": "Shop Now",
+      "cta": "Explore Collection",
       "link": "/products?sort=newest",
-      "image": "https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=1920&h=700&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&h=900&fit=crop&q=80"
     },
     {
-      "title": "Up to 50% Off Electronics",
-      "description": "Huge savings on headphones, smartwatches, speakers, and more. Limited time only.",
+      "title": "Up to 50% Off Tech Essentials",
+      "description": "Massive savings on headphones, smartwatches, and speakers. While stocks last.",
       "tag": "Flash Sale",
       "cta": "View Deals",
       "link": "/deals",
-      "image": "https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=1920&h=700&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1550009158-9ebf69173e03?w=1920&h=900&fit=crop&q=80"
     },
     {
-      "title": "Free Shipping Over $50",
-      "description": "Enjoy free standard shipping on all orders over $50. No promo code needed.",
+      "title": "Free Shipping on Orders Over $50",
+      "description": "No code needed. Fast, reliable delivery on every qualifying order.",
       "tag": "Special Offer",
       "cta": "Start Shopping",
       "link": "/products",
-      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=1920&h=700&fit=crop&q=80"
+      "image": "https://images.unsplash.com/photo-1490114538077-0a7f8cb49891?w=1920&h=900&fit=crop&q=80"
     }
   ],
   "promos": [

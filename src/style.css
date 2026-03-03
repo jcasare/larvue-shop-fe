@@ -133,17 +133,17 @@ html {
 .stagger-7 { animation-delay: 0.35s; }
 .stagger-8 { animation-delay: 0.4s; }
 
-/* Glass effect utility */
+/* Glass effect utility — auto-adapts to dark mode */
 .glass {
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
-.glass-dark {
-  background: rgba(17, 17, 17, 0.82);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(10, 10, 10, 0.82);
+  }
 }
 
 /* Shimmer loading effect */
@@ -177,16 +177,18 @@ html {
   overflow: hidden;
 }
 
-/* Dark mode overrides */
-.dark {
-  --color-paper: #0A0A0A;
-  --color-surface: #141414;
-  --color-ink: #F5F0EB;
-  --color-ink-light: #A09B94;
-  --color-ink-muted: #6B6660;
-  --color-border: #2A2825;
-  --color-border-light: #1E1D1B;
-  --color-coral-light: #2D1510;
-  --color-forest-light: #0D261A;
-  --color-amber-light: #261A00;
+/* Dark mode overrides — must use media query to match Tailwind v4's default dark: variant */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-paper: #0A0A0A;
+    --color-surface: #141414;
+    --color-ink: #F5F0EB;
+    --color-ink-light: #A09B94;
+    --color-ink-muted: #918C85;
+    --color-border: #2A2825;
+    --color-border-light: #1E1D1B;
+    --color-coral-light: #2D1510;
+    --color-forest-light: #0D261A;
+    --color-amber-light: #261A00;
+  }
 }

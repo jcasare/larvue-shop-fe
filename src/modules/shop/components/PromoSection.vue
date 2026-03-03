@@ -23,7 +23,7 @@
               </p>
               <router-link
                 :to="promos[0]?.link || '/products'"
-                class="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-ink transition-all hover:bg-white/90 active:scale-[0.98]"
+                class="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-[#111] transition-all hover:bg-white/90 active:scale-[0.98]"
               >
                 Shop Collection
                 <ArrowRightIcon class="h-3.5 w-3.5" />
@@ -52,7 +52,7 @@
               </p>
               <router-link
                 :to="promos[1]?.link || '/products?sort=popular'"
-                class="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-ink transition-all hover:bg-white/90 active:scale-[0.98]"
+                class="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold text-[#111] transition-all hover:bg-white/90 active:scale-[0.98]"
               >
                 View Best Sellers
                 <ArrowRightIcon class="h-3.5 w-3.5" />

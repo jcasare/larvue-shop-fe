@@ -9,7 +9,7 @@
         class="absolute inset-0 h-full w-full object-cover"
       />
       <!-- Overlay -->
-      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/70 to-[#111]/40"></div>
 
       <!-- Grain texture -->
       <div class="absolute inset-0 opacity-[0.03] mix-blend-overlay" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg==')"></div>
@@ -47,7 +47,7 @@
       <div class="flex justify-end mb-4">
         <router-link
           to="/"
-          class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+          class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink transition-colors dark:hover:text-white"
         >
           <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -63,7 +63,7 @@
 
         <div class="lg:mt-0 mt-8">
           <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted">Welcome back</span>
-          <h2 class="mt-1 text-2xl font-bold tracking-tight text-ink lg:text-3xl font-display dark:text-ink">
+          <h2 class="mt-1 text-2xl font-bold tracking-tight text-ink lg:text-3xl font-display">
             Sign in
           </h2>
           <p class="mt-2 text-sm text-ink-muted">
@@ -76,7 +76,7 @@
         <button
           @click="handleGoogleLogin"
           :disabled="googleLoading"
-          class="mt-6 flex w-full items-center justify-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 text-sm font-medium text-ink transition-all hover:bg-ink/[0.03] hover:border-ink/20 dark:border-border dark:bg-surface dark:text-ink dark:hover:bg-white/5 dark:hover:border-white/20"
+          class="mt-6 flex w-full items-center justify-center gap-3 rounded-xl border border-border bg-surface px-4 py-3 text-sm font-medium text-ink transition-all hover:bg-ink/[0.03] hover:border-ink/20 dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:hover:bg-white/5 dark:hover:border-white/20"
         >
           <svg class="h-5 w-5" viewBox="0 0 24 24">
             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>

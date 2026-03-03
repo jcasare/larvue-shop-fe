@@ -14,7 +14,7 @@
             <!-- Close button -->
             <button
               @click="$emit('close')"
-              class="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-ink/5 text-ink-muted hover:bg-ink/10 hover:text-ink transition-colors dark:bg-white/10 dark:text-ink-muted dark:hover:bg-white/20 dark:hover:text-ink"
+              class="absolute right-4 top-4 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-ink/5 text-ink-muted hover:bg-ink/10 hover:text-ink transition-colors dark:bg-white/10 dark:text-ink-muted dark:hover:bg-white/20 dark:hover:text-white"
             >
               <XMarkIcon class="h-4 w-4" />
             </button>
@@ -110,14 +110,14 @@
                   </div>
                   <button
                     @click="handleAddToCart"
-                    class="w-full rounded-xl bg-ink py-3 text-sm font-semibold text-white transition-all hover:bg-ink/80 active:scale-[0.98] dark:bg-white dark:text-ink dark:hover:bg-white/80"
+                    class="w-full rounded-xl bg-ink py-3 text-sm font-semibold text-white transition-all hover:bg-ink/80 active:scale-[0.98] dark:bg-white dark:text-[#111] dark:hover:bg-white/80"
                   >
                     Add to Cart
                   </button>
                   <router-link
                     :to="{ name: 'product-detail', params: { category: product.category || 'shop', slug: product.slug || product.id } }"
                     @click="$emit('close')"
-                    class="block text-center text-xs font-medium text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+                    class="block text-center text-xs font-medium text-ink-muted hover:text-ink transition-colors dark:hover:text-white"
                   >
                     View full details
                   </router-link>

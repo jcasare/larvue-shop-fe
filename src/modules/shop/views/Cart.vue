@@ -16,7 +16,7 @@
       </p>
       <router-link
         to="/products"
-        class="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-white hover:bg-ink/80 transition-all active:scale-[0.98] dark:bg-white dark:text-ink dark:hover:bg-white/80"
+        class="mt-8 inline-flex items-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-white hover:bg-ink/80 transition-all active:scale-[0.98] dark:bg-white dark:text-[#111] dark:hover:bg-white/80"
       >
         Start Shopping
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -67,14 +67,14 @@
                 <div class="flex items-center rounded-lg border border-border dark:border-border">
                   <button
                     @click="updateQty(item.id, item.quantity - 1)"
-                    class="flex h-8 w-8 items-center justify-center text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+                    class="flex h-8 w-8 items-center justify-center text-ink-muted hover:text-ink transition-colors dark:hover:text-white"
                   >
                     <MinusIcon class="h-3.5 w-3.5" />
                   </button>
                   <span class="w-8 text-center text-xs font-semibold text-ink dark:text-ink">{{ item.quantity }}</span>
                   <button
                     @click="updateQty(item.id, item.quantity + 1)"
-                    class="flex h-8 w-8 items-center justify-center text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+                    class="flex h-8 w-8 items-center justify-center text-ink-muted hover:text-ink transition-colors dark:hover:text-white"
                   >
                     <PlusIcon class="h-3.5 w-3.5" />
                   </button>
@@ -133,7 +133,7 @@
           </div>
 
           <button
-            class="mt-6 w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white transition-all hover:bg-ink/80 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-ink/20 dark:bg-white dark:text-ink dark:hover:bg-white/80 dark:focus:ring-white/20"
+            class="mt-6 w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white transition-all hover:bg-ink/80 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-ink/20 dark:bg-white dark:text-[#111] dark:hover:bg-white/80 dark:focus:ring-white/20"
           >
             Proceed to Checkout
           </button>
@@ -141,7 +141,7 @@
           <div class="mt-4 text-center">
             <router-link
               to="/products"
-              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-muted hover:text-ink transition-colors dark:hover:text-white"
             >
               Continue Shopping
               <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

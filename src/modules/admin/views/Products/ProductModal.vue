@@ -26,7 +26,7 @@
           v-model="form.name"
           type="text"
           required
-          class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/20 dark:focus:border-white/15 dark:focus:ring-white/10"
+          class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/35 dark:focus:border-white/15 dark:focus:ring-white/10"
         />
         <p v-if="errors.name" class="mt-1 text-[11px] text-coral">{{ errors.name }}</p>
       </div>
@@ -38,7 +38,7 @@
           id="description"
           v-model="form.description"
           rows="3"
-          class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all resize-none dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/20 dark:focus:border-white/15 dark:focus:ring-white/10"
+          class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all resize-none dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/35 dark:focus:border-white/15 dark:focus:ring-white/10"
         />
         <p v-if="errors.description" class="mt-1 text-[11px] text-coral">{{ errors.description }}</p>
       </div>
@@ -105,12 +105,12 @@
       <div>
         <label class="block text-xs font-medium text-ink-light mb-1.5 dark:text-white/40">
           Images
-          <span class="text-ink-muted dark:text-white/20">(first image is the main image)</span>
+          <span class="text-ink-muted dark:text-white/50">(first image is the main image)</span>
         </label>
 
         <!-- Existing images (when editing) -->
         <div v-if="existingImages.length > 0" class="mb-3">
-          <p class="text-[11px] text-ink-muted mb-2 dark:text-white/25">Current images</p>
+          <p class="text-[11px] text-ink-muted mb-2 dark:text-white/40">Current images</p>
           <div class="flex flex-wrap gap-2">
             <div
               v-for="(img, idx) in existingImages"
@@ -141,7 +141,7 @@
           accept="image/*"
           multiple
           @change="onImagesChange"
-          class="block w-full text-sm text-ink-muted file:mr-4 file:rounded-lg file:border-0 file:bg-ink/5 file:px-4 file:py-2 file:text-sm file:font-medium file:text-ink hover:file:bg-ink/10 dark:text-white/30 dark:file:bg-white/[0.06] dark:file:text-white/50 dark:hover:file:bg-white/10"
+          class="block w-full text-sm text-ink-muted file:mr-4 file:rounded-lg file:border-0 file:bg-ink/5 file:px-4 file:py-2 file:text-sm file:font-medium file:text-ink hover:file:bg-ink/10 dark:text-white/50 dark:file:bg-white/[0.06] dark:file:text-white/50 dark:hover:file:bg-white/10"
         />
         <p v-if="errors.image || errors.images" class="mt-1 text-[11px] text-coral">{{ errors.image || errors.images }}</p>
 

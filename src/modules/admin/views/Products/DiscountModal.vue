@@ -20,7 +20,7 @@
     <div v-else class="space-y-6 pt-2">
       <!-- Existing discounts -->
       <div v-if="discounts.length > 0" class="space-y-3">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-muted dark:text-white/30">Active & Scheduled</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-muted dark:text-white/50">Active & Scheduled</h3>
         <div
           v-for="discount in discounts"
           :key="discount.id"
@@ -29,7 +29,7 @@
           <div class="space-y-1">
             <div class="flex items-center gap-2">
               <span class="text-sm font-bold text-ink font-display dark:text-white/80">${{ Number(discount.discount_price).toFixed(2) }}</span>
-              <span class="text-xs text-ink-muted line-through dark:text-white/20">${{ Number(product.price).toFixed(2) }}</span>
+              <span class="text-xs text-ink-muted line-through dark:text-white/50">${{ Number(product.price).toFixed(2) }}</span>
               <span
                 :class="[
                   'inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold',
@@ -40,20 +40,20 @@
                 {{ discountStatus(discount).label }}
               </span>
             </div>
-            <p class="text-[11px] text-ink-muted dark:text-white/25">
+            <p class="text-[11px] text-ink-muted dark:text-white/40">
               {{ formatDate(discount.starts_at) }} — {{ formatDate(discount.ends_at) }}
             </p>
           </div>
           <div class="flex items-center gap-1">
             <button
-              class="rounded-lg p-1.5 text-ink-muted hover:bg-amber/10 hover:text-amber transition-colors dark:text-white/25 dark:hover:bg-amber/10 dark:hover:text-amber"
+              class="rounded-lg p-1.5 text-ink-muted hover:bg-amber/10 hover:text-amber transition-colors dark:text-white/40 dark:hover:bg-amber/10 dark:hover:text-amber"
               :title="discount.is_active ? 'Deactivate' : 'Activate'"
               @click="toggleDiscount(discount)"
             >
               <component :is="discount.is_active ? EyeIcon : EyeSlashIcon" class="h-4 w-4" />
             </button>
             <button
-              class="rounded-lg p-1.5 text-ink-muted hover:bg-coral/10 hover:text-coral transition-colors dark:text-white/25 dark:hover:bg-coral/10 dark:hover:text-coral"
+              class="rounded-lg p-1.5 text-ink-muted hover:bg-coral/10 hover:text-coral transition-colors dark:text-white/40 dark:hover:bg-coral/10 dark:hover:text-coral"
               title="Delete"
               @click="handleDeleteDiscount(discount.id)"
             >
@@ -64,7 +64,7 @@
       </div>
 
       <div v-else class="py-6 text-center">
-        <p class="text-sm text-ink-muted dark:text-white/25">No discounts set for this product.</p>
+        <p class="text-sm text-ink-muted dark:text-white/40">No discounts set for this product.</p>
       </div>
 
       <!-- Divider -->
@@ -72,7 +72,7 @@
 
       <!-- Add new discount -->
       <form @submit.prevent="handleAddDiscount" class="space-y-4">
-        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-muted dark:text-white/30">Add New Discount</h3>
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-ink-muted dark:text-white/50">Add New Discount</h3>
 
         <div class="grid grid-cols-3 gap-3">
           <div>
@@ -227,7 +227,7 @@ function discountStatus(discount) {
   const end = new Date(discount.ends_at)
 
   if (!discount.is_active) {
-    return { label: 'Inactive', class: 'bg-ink/5 text-ink-muted dark:bg-white/5 dark:text-white/30', dot: 'bg-ink-muted dark:bg-white/30' }
+    return { label: 'Inactive', class: 'bg-ink/5 text-ink-muted dark:bg-white/5 dark:text-white/50', dot: 'bg-ink-muted dark:bg-white/30' }
   }
   if (now < start) {
     return { label: 'Scheduled', class: 'bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400', dot: 'bg-blue-500' }

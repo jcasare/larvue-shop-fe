@@ -25,7 +25,7 @@
           />
           <button
             type="submit"
-            class="shrink-0 rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-all hover:bg-white/90 active:scale-[0.98]"
+            class="shrink-0 rounded-xl bg-white px-7 py-3.5 text-sm font-semibold text-[#111] transition-all hover:bg-white/90 active:scale-[0.98]"
           >
             Subscribe
           </button>

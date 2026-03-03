@@ -3,9 +3,9 @@
     <!-- Header -->
     <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-8 animate-fade-in-up">
       <div>
-        <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/25">Catalog</span>
+        <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/40">Catalog</span>
         <h1 class="mt-1 text-2xl font-bold tracking-tight text-ink font-display dark:text-white/90">Categories</h1>
-        <p class="mt-1 text-sm text-ink-muted dark:text-white/30">{{ categories.length }} categories</p>
+        <p class="mt-1 text-sm text-ink-muted dark:text-white/50">{{ categories.length }} categories</p>
       </div>
       <button
         @click="openModal()"
@@ -31,10 +31,10 @@
     <!-- Empty state -->
     <div v-else-if="categories.length === 0" class="py-20 text-center animate-fade-in-up">
       <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-ink/5 dark:bg-white/[0.04]">
-        <TagIcon class="h-7 w-7 text-ink-muted dark:text-white/20" />
+        <TagIcon class="h-7 w-7 text-ink-muted dark:text-white/50" />
       </div>
       <h3 class="mt-5 text-lg font-semibold text-ink font-display dark:text-white/80">No categories yet</h3>
-      <p class="mt-2 text-sm text-ink-muted max-w-sm mx-auto dark:text-white/25">Create your first category to organize your products.</p>
+      <p class="mt-2 text-sm text-ink-muted max-w-sm mx-auto dark:text-white/40">Create your first category to organize your products.</p>
       <button
         @click="openModal()"
         class="mt-6 inline-flex items-center gap-2 rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-ink/80 active:scale-[0.98] dark:bg-white dark:text-[#080808] dark:hover:bg-white/90"
@@ -55,14 +55,14 @@
         <div class="flex items-start justify-between">
           <div class="flex-1 min-w-0">
             <h3 class="text-sm font-bold text-ink font-display truncate dark:text-white/85">{{ cat.name }}</h3>
-            <p class="mt-1 text-[12px] text-ink-muted dark:text-white/30">
+            <p class="mt-1 text-[12px] text-ink-muted dark:text-white/50">
               {{ cat.slug || '—' }}
             </p>
             <p v-if="cat.description" class="mt-2 text-[12px] text-ink-light line-clamp-2 dark:text-white/35">
               {{ cat.description }}
             </p>
           </div>
-          <span class="shrink-0 ml-3 inline-flex items-center rounded-full bg-ink/5 px-2.5 py-1 text-[10px] font-bold text-ink-muted dark:bg-white/[0.06] dark:text-white/30">
+          <span class="shrink-0 ml-3 inline-flex items-center rounded-full bg-ink/5 px-2.5 py-1 text-[10px] font-bold text-ink-muted dark:bg-white/[0.06] dark:text-white/50">
             {{ cat.product_count ?? cat.products_count ?? cat.products?.length ?? 0 }} products
           </span>
         </div>
@@ -109,7 +109,7 @@
                     v-model="form.name"
                     type="text"
                     required
-                    class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/20 dark:focus:border-white/15 dark:focus:ring-white/10"
+                    class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/35 dark:focus:border-white/15 dark:focus:ring-white/10"
                     placeholder="e.g. Apparel"
                   />
                 </div>
@@ -119,17 +119,17 @@
                   <input
                     v-model="form.slug"
                     type="text"
-                    class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/20 dark:focus:border-white/15 dark:focus:ring-white/10"
+                    class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/35 dark:focus:border-white/15 dark:focus:ring-white/10"
                     placeholder="auto-generated if empty"
                   />
                 </div>
 
                 <div>
-                  <label class="block text-xs font-medium text-ink-light mb-1.5 dark:text-white/40">Description <span class="text-ink-muted dark:text-white/20">(optional)</span></label>
+                  <label class="block text-xs font-medium text-ink-light mb-1.5 dark:text-white/40">Description <span class="text-ink-muted dark:text-white/50">(optional)</span></label>
                   <textarea
                     v-model="form.description"
                     rows="3"
-                    class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all resize-none dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/20 dark:focus:border-white/15 dark:focus:ring-white/10"
+                    class="block w-full rounded-xl border border-border bg-paper px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all resize-none dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/35 dark:focus:border-white/15 dark:focus:ring-white/10"
                     placeholder="Brief description..."
                   />
                 </div>
@@ -175,7 +175,7 @@
           <div class="flex min-h-full items-center justify-center p-4">
             <div class="relative w-full max-w-sm rounded-2xl border border-border bg-surface p-6 shadow-2xl animate-scale-in dark:border-white/[0.08] dark:bg-[#141414]" @click.stop>
               <h2 class="text-lg font-bold text-ink font-display dark:text-white/90">Delete category</h2>
-              <p class="mt-2 text-sm text-ink-muted dark:text-white/30">
+              <p class="mt-2 text-sm text-ink-muted dark:text-white/50">
                 Are you sure you want to delete <strong class="text-ink dark:text-white/70">{{ deletingCategory?.name }}</strong>? This action cannot be undone.
               </p>
               <div class="mt-6 flex justify-end gap-3">

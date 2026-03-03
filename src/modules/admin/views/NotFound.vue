@@ -4,7 +4,7 @@
     <h1 class="mt-4 text-2xl font-semibold text-ink font-display sm:text-3xl animate-fade-in-up dark:text-white/90" style="animation-delay: 0.05s">
       Page not found
     </h1>
-    <p class="mt-2 text-center text-ink-muted animate-fade-in-up dark:text-white/30" style="animation-delay: 0.1s">
+    <p class="mt-2 text-center text-ink-muted animate-fade-in-up dark:text-white/50" style="animation-delay: 0.1s">
       Sorry, we couldn't find the page you're looking for.
     </p>
     <router-link

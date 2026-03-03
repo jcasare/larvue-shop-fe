@@ -3,9 +3,9 @@
     <div class="w-full max-w-[380px] animate-fade-in-up">
       <div class="text-center">
         <img src="@/assets/vular-logo.png" alt="Larvue" class="mx-auto h-8 w-auto mb-10 dark:brightness-0 dark:invert dark:opacity-60" />
-        <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/25">Account Recovery</span>
+        <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/40">Account Recovery</span>
         <h2 class="mt-1.5 text-2xl font-bold tracking-tight text-ink font-display dark:text-white/90">Reset your password</h2>
-        <p class="mt-2 text-sm text-ink-muted dark:text-white/30">Enter your email and we'll send you a reset link.</p>
+        <p class="mt-2 text-sm text-ink-muted dark:text-white/50">Enter your email and we'll send you a reset link.</p>
       </div>
 
       <form class="mt-8 space-y-5" @submit.prevent="handleSubmit">
@@ -17,7 +17,7 @@
             type="email"
             autocomplete="email"
             required
-            class="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/20 dark:focus:border-white/15 dark:focus:ring-white/10"
+            class="block w-full rounded-xl border border-border bg-surface px-4 py-2.5 text-sm text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/35 dark:focus:border-white/15 dark:focus:ring-white/10"
             placeholder="you@company.com"
           />
         </div>
@@ -39,7 +39,7 @@
         </button>
       </form>
 
-      <p class="mt-8 text-center text-[13px] text-ink-muted dark:text-white/25">
+      <p class="mt-8 text-center text-[13px] text-ink-muted dark:text-white/40">
         Remember your password?
         <router-link :to="{ name: 'login' }" class="font-semibold text-coral hover:text-coral-dark transition-colors">Back to sign in</router-link>
       </p>

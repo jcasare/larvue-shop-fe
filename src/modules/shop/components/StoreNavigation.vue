@@ -6,8 +6,8 @@
           to="/products"
           class="shrink-0 rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200"
           :class="!activeCategory
-            ? 'bg-ink text-white dark:bg-white dark:text-ink'
-            : 'text-ink-light hover:text-ink hover:bg-ink/5 dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5'"
+            ? 'bg-ink text-white dark:bg-white dark:text-[#111]'
+            : 'text-ink-light hover:text-ink hover:bg-ink/5 dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5'"
         >
           All
         </router-link>
@@ -17,8 +17,8 @@
           :to="{ name: 'products', query: { category: cat.slug || cat.name } }"
           class="shrink-0 rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-all duration-200"
           :class="activeCategory === (cat.slug || cat.name)
-            ? 'bg-ink text-white dark:bg-white dark:text-ink'
-            : 'text-ink-light hover:text-ink hover:bg-ink/5 dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5'"
+            ? 'bg-ink text-white dark:bg-white dark:text-[#111]'
+            : 'text-ink-light hover:text-ink hover:bg-ink/5 dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5'"
         >
           {{ cat.name }}
         </router-link>

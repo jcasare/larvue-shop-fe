@@ -15,7 +15,7 @@
         <!-- Mobile filter button -->
         <button
           @click="mobileFiltersOpen = true"
-          class="flex items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-xs font-semibold text-ink-light transition-all hover:border-ink hover:text-ink lg:hidden dark:border-border dark:text-ink-muted dark:hover:border-white/40 dark:hover:text-ink"
+          class="flex items-center gap-2 rounded-xl border border-border px-4 py-2.5 text-xs font-semibold text-ink-light transition-all hover:border-ink hover:text-ink lg:hidden dark:border-border dark:text-ink-muted dark:hover:border-white/40 dark:hover:text-white"
         >
           <FunnelIcon class="h-4 w-4" />
           Filters
@@ -67,7 +67,7 @@
             class="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-ink dark:border-border dark:bg-surface dark:text-ink"
           >
             {{ productStore.category }}
-            <button @click="handleCategoryChange('')" class="text-ink-muted hover:text-ink transition-colors dark:hover:text-ink">
+            <button @click="handleCategoryChange('')" class="text-ink-muted hover:text-ink transition-colors dark:hover:text-white">
               <XMarkIcon class="h-3 w-3" />
             </button>
           </span>
@@ -76,7 +76,7 @@
             class="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1 text-[11px] font-medium text-ink dark:border-border dark:bg-surface dark:text-ink"
           >
             ${{ productStore.minPrice || 0 }} - ${{ productStore.maxPrice || '...' }}
-            <button @click="productStore.setPriceRange(null, null)" class="text-ink-muted hover:text-ink transition-colors dark:hover:text-ink">
+            <button @click="productStore.setPriceRange(null, null)" class="text-ink-muted hover:text-ink transition-colors dark:hover:text-white">
               <XMarkIcon class="h-3 w-3" />
             </button>
           </span>
@@ -97,7 +97,7 @@
           <button
             @click="productStore.setPage(productStore.page - 1)"
             :disabled="productStore.page <= 1"
-            class="flex h-9 w-9 items-center justify-center rounded-xl border border-border text-ink-light transition-all hover:border-ink hover:text-ink disabled:opacity-30 disabled:hover:border-border disabled:hover:text-ink-light dark:border-border dark:text-ink-muted dark:hover:border-white/40 dark:hover:text-ink"
+            class="flex h-9 w-9 items-center justify-center rounded-xl border border-border text-ink-light transition-all hover:border-ink hover:text-ink disabled:opacity-30 disabled:hover:border-border disabled:hover:text-ink-light dark:border-border dark:text-ink-muted dark:hover:border-white/40 dark:hover:text-white"
           >
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -109,7 +109,7 @@
             @click="productStore.setPage(p)"
             class="flex h-9 w-9 items-center justify-center rounded-xl text-xs font-semibold transition-all"
             :class="p === productStore.page
-              ? 'bg-ink text-white dark:bg-white dark:text-ink'
+              ? 'bg-ink text-white dark:bg-white dark:text-[#111]'
               : 'text-ink-light hover:bg-ink/5 dark:text-ink-muted dark:hover:bg-white/5'"
           >
             {{ p }}
@@ -117,7 +117,7 @@
           <button
             @click="productStore.setPage(productStore.page + 1)"
             :disabled="productStore.page >= productStore.totalPages"
-            class="flex h-9 w-9 items-center justify-center rounded-xl border border-border text-ink-light transition-all hover:border-ink hover:text-ink disabled:opacity-30 disabled:hover:border-border disabled:hover:text-ink-light dark:border-border dark:text-ink-muted dark:hover:border-white/40 dark:hover:text-ink"
+            class="flex h-9 w-9 items-center justify-center rounded-xl border border-border text-ink-light transition-all hover:border-ink hover:text-ink disabled:opacity-30 disabled:hover:border-border disabled:hover:text-ink-light dark:border-border dark:text-ink-muted dark:hover:border-white/40 dark:hover:text-white"
           >
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -135,7 +135,7 @@
           <div class="fixed inset-y-0 right-0 w-80 max-w-full overflow-y-auto bg-surface p-6 shadow-2xl dark:bg-surface">
             <div class="flex items-center justify-between mb-6">
               <h2 class="text-lg font-bold text-ink font-display dark:text-ink">Filters</h2>
-              <button @click="mobileFiltersOpen = false" class="rounded-full p-2 text-ink-muted hover:text-ink hover:bg-ink/5 transition-colors dark:hover:bg-white/5 dark:hover:text-ink">
+              <button @click="mobileFiltersOpen = false" class="rounded-full p-2 text-ink-muted hover:text-ink hover:bg-ink/5 transition-colors dark:hover:bg-white/5 dark:hover:text-white">
                 <XMarkIcon class="h-5 w-5" />
               </button>
             </div>

@@ -38,13 +38,14 @@ export const useAuthStore = defineStore("shopAuth", {
       return response;
     },
 
-    async register(name, email, password, passwordConfirmation) {
+    async register(firstName, lastName, email, password, passwordConfirmation) {
       await axios.get("/sanctum/csrf-cookie", {
         baseURL: import.meta.env.VITE_API_BASE_URL?.replace(/\/api$/, "") || "http://localhost:8000",
       });
 
       const response = await axios.post("/auth/register", {
-        name,
+        first_name: firstName,
+        last_name: lastName,
         email,
         password,
         password_confirmation: passwordConfirmation,

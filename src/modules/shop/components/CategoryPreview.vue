@@ -11,7 +11,7 @@
       />
     </div>
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent transition-all duration-300 group-hover:from-ink/90">
+    <div class="absolute inset-0 bg-gradient-to-t from-[#111]/80 via-[#111]/20 to-transparent transition-all duration-300 group-hover:from-[#111]/90 dark:from-[#0A0A0A]/85 dark:via-[#0A0A0A]/30 dark:group-hover:from-[#0A0A0A]/95">
       <div class="absolute bottom-0 left-0 right-0 p-4 sm:p-5">
         <h3 class="text-base font-bold text-white font-display sm:text-lg">{{ category.name }}</h3>
         <div class="flex items-center justify-between mt-1.5">

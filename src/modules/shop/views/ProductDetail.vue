@@ -29,7 +29,7 @@
       <p class="mt-2 text-sm text-ink-muted">The product you're looking for doesn't exist or has been removed.</p>
       <router-link
         to="/products"
-        class="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-ink/80 transition-all active:scale-[0.98] dark:bg-white dark:text-ink dark:hover:bg-white/80"
+        class="mt-6 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white hover:bg-ink/80 transition-all active:scale-[0.98] dark:bg-white dark:text-[#111] dark:hover:bg-white/80"
       >
         Browse Products
       </router-link>
@@ -39,9 +39,9 @@
     <template v-else>
       <!-- Breadcrumb -->
       <nav class="mb-8 flex items-center gap-2 text-xs text-ink-muted animate-fade-in">
-        <router-link to="/" class="hover:text-ink transition-colors dark:hover:text-ink">Home</router-link>
+        <router-link to="/" class="hover:text-ink transition-colors dark:hover:text-white">Home</router-link>
         <ChevronRightIcon class="h-3 w-3" />
-        <router-link to="/products" class="hover:text-ink transition-colors dark:hover:text-ink">Products</router-link>
+        <router-link to="/products" class="hover:text-ink transition-colors dark:hover:text-white">Products</router-link>
         <ChevronRightIcon class="h-3 w-3" />
         <span class="text-ink dark:text-ink font-medium">{{ product.name }}</span>
       </nav>
@@ -160,14 +160,14 @@
               <div class="flex items-center rounded-xl border border-border dark:border-border">
                 <button
                   @click="quantity > 1 && quantity--"
-                  class="flex h-10 w-10 items-center justify-center text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+                  class="flex h-10 w-10 items-center justify-center text-ink-muted hover:text-ink transition-colors dark:hover:text-white"
                 >
                   <MinusIcon class="h-4 w-4" />
                 </button>
                 <span class="w-12 text-center text-sm font-semibold text-ink dark:text-ink">{{ quantity }}</span>
                 <button
                   @click="quantity++"
-                  class="flex h-10 w-10 items-center justify-center text-ink-muted hover:text-ink transition-colors dark:hover:text-ink"
+                  class="flex h-10 w-10 items-center justify-center text-ink-muted hover:text-ink transition-colors dark:hover:text-white"
                 >
                   <PlusIcon class="h-4 w-4" />
                 </button>
@@ -177,7 +177,7 @@
             <div class="flex gap-3">
               <button
                 @click="handleAddToCart"
-                class="flex-1 rounded-xl bg-ink py-3.5 text-sm font-semibold text-white transition-all hover:bg-ink/80 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-ink/20 dark:bg-white dark:text-ink dark:hover:bg-white/80 dark:focus:ring-white/20"
+                class="flex-1 rounded-xl bg-ink py-3.5 text-sm font-semibold text-white transition-all hover:bg-ink/80 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-ink/20 dark:bg-white dark:text-[#111] dark:hover:bg-white/80 dark:focus:ring-white/20"
               >
                 Add to Cart
               </button>

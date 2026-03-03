@@ -25,7 +25,7 @@
           >
             <span
               v-if="selectedCategory === (cat.slug || cat.name)"
-              class="h-1.5 w-1.5 rounded-full bg-white dark:bg-ink"
+              class="h-1.5 w-1.5 rounded-full bg-white dark:bg-[#111]"
             ></span>
           </span>
           <input
@@ -93,7 +93,7 @@
             v-for="range in priceRanges"
             :key="range.label"
             @click="$emit('update:minPrice', range.min); $emit('update:maxPrice', range.max)"
-            class="rounded-full border border-border px-3 py-1 text-[11px] font-medium text-ink-light transition-all hover:border-ink hover:text-ink dark:border-border dark:text-ink-muted dark:hover:border-white/40 dark:hover:text-ink"
+            class="rounded-full border border-border px-3 py-1 text-[11px] font-medium text-ink-light transition-all hover:border-ink hover:text-ink dark:border-border dark:text-ink-muted dark:hover:border-white/40 dark:hover:text-white"
           >
             {{ range.label }}
           </button>
@@ -141,7 +141,7 @@
     <div class="border-t border-border pt-6 dark:border-border">
       <button
         @click="$emit('reset')"
-        class="w-full rounded-xl border border-border py-2.5 text-xs font-semibold text-ink-light transition-all hover:bg-ink/5 hover:text-ink dark:border-border dark:text-ink-muted dark:hover:bg-white/5 dark:hover:text-ink"
+        class="w-full rounded-xl border border-border py-2.5 text-xs font-semibold text-ink-light transition-all hover:bg-ink/5 hover:text-ink dark:border-border dark:text-ink-muted dark:hover:bg-white/5 dark:hover:text-white"
       >
         Reset all filters
       </button>

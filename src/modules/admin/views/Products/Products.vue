@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between mb-8 animate-fade-in-up">
       <div>
-        <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/25">Catalog</span>
+        <span class="text-[10px] font-semibold uppercase tracking-[0.15em] text-ink-muted dark:text-white/40">Catalog</span>
         <h1 class="mt-1 text-2xl font-bold tracking-tight text-ink font-display dark:text-white/90">Products</h1>
       </div>
       <button

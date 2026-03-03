@@ -67,7 +67,7 @@
 
         <button
           @click="$emit('addToCart', product)"
-          class="mt-3 w-full rounded-xl bg-ink py-2.5 text-xs font-semibold text-white transition-all duration-200 hover:bg-ink/80 active:scale-[0.98] dark:bg-white dark:text-ink dark:hover:bg-white/80"
+          class="mt-3 w-full rounded-xl bg-ink py-2.5 text-xs font-semibold text-white transition-all duration-200 hover:bg-ink/80 active:scale-[0.98] dark:bg-white dark:text-[#111] dark:hover:bg-white/80"
         >
           Add to Cart
         </button>

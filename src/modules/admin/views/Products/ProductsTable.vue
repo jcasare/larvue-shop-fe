@@ -2,15 +2,15 @@
   <div class="rounded-2xl border border-border bg-surface overflow-hidden dark:border-white/[0.06] dark:bg-white/[0.02]">
     <!-- Toolbar -->
     <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between p-5 border-b border-border dark:border-white/[0.06]">
-      <p class="text-sm text-ink-muted dark:text-white/30">
+      <p class="text-sm text-ink-muted dark:text-white/50">
         <span class="font-semibold text-ink dark:text-white/70">{{ productStore.totalRecords }}</span> products
       </p>
       <div class="relative">
-        <MagnifyingGlassIcon class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted dark:text-white/20" />
+        <MagnifyingGlassIcon class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted dark:text-white/50" />
         <input
           v-model="searchQuery"
           placeholder="Search products..."
-          class="h-9 w-full sm:w-64 rounded-lg border border-border bg-paper pl-9 pr-4 text-[13px] text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.06] dark:bg-white/[0.03] dark:text-white/80 dark:placeholder:text-white/20 dark:focus:border-white/10 dark:focus:ring-white/10"
+          class="h-9 w-full sm:w-64 rounded-lg border border-border bg-paper pl-9 pr-4 text-[13px] text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.06] dark:bg-white/[0.03] dark:text-white/80 dark:placeholder:text-white/35 dark:focus:border-white/10 dark:focus:ring-white/10"
         />
       </div>
     </div>
@@ -37,7 +37,7 @@
       <Column field="id" header="ID" sortable style="width: 70px">
         <template #body="{ data }">
           <Skeleton v-if="productStore.loading" width="2rem" />
-          <span v-else class="text-[13px] text-ink-muted font-mono dark:text-white/30">{{ data.id }}</span>
+          <span v-else class="text-[13px] text-ink-muted font-mono dark:text-white/50">{{ data.id }}</span>
         </template>
       </Column>
 
@@ -86,7 +86,7 @@
       <Column field="updated_at" header="Updated" sortable style="width: 140px">
         <template #body="{ data }">
           <Skeleton v-if="productStore.loading" width="6rem" />
-          <span v-else class="text-[12px] text-ink-muted dark:text-white/25">
+          <span v-else class="text-[12px] text-ink-muted dark:text-white/40">
             {{ formatDate(data.updated_at) }}
           </span>
         </template>
@@ -101,21 +101,21 @@
           </div>
           <div v-else class="flex items-center gap-1">
             <button
-              class="rounded-lg p-1.5 text-ink-muted hover:bg-ink/5 hover:text-ink transition-colors dark:text-white/25 dark:hover:bg-white/5 dark:hover:text-white/60"
+              class="rounded-lg p-1.5 text-ink-muted hover:bg-ink/5 hover:text-ink transition-colors dark:text-white/40 dark:hover:bg-white/5 dark:hover:text-white/60"
               title="Edit"
               @click="emit('edit', data)"
             >
               <PencilSquareIcon class="h-4 w-4" />
             </button>
             <button
-              class="rounded-lg p-1.5 text-ink-muted hover:bg-amber/10 hover:text-amber transition-colors dark:text-white/25 dark:hover:bg-amber/10 dark:hover:text-amber"
+              class="rounded-lg p-1.5 text-ink-muted hover:bg-amber/10 hover:text-amber transition-colors dark:text-white/40 dark:hover:bg-amber/10 dark:hover:text-amber"
               title="Discounts"
               @click="emit('discount', data)"
             >
               <TagIcon class="h-4 w-4" />
             </button>
             <button
-              class="rounded-lg p-1.5 text-ink-muted hover:bg-coral/10 hover:text-coral transition-colors dark:text-white/25 dark:hover:bg-coral/10 dark:hover:text-coral"
+              class="rounded-lg p-1.5 text-ink-muted hover:bg-coral/10 hover:text-coral transition-colors dark:text-white/40 dark:hover:bg-coral/10 dark:hover:text-coral"
               title="Delete"
               @click="handleDelete(data.id)"
             >

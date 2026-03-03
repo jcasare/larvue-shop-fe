@@ -12,7 +12,7 @@
       <header class="sticky top-0 z-30 flex h-14 items-center gap-4 border-b border-border bg-paper/80 backdrop-blur-xl px-4 sm:px-6 dark:border-white/[0.06] dark:bg-[#080808]/80">
         <!-- Mobile hamburger -->
         <button
-          class="rounded-lg p-2 text-ink-muted hover:bg-ink/5 hover:text-ink transition-colors lg:hidden dark:text-white/30 dark:hover:bg-white/5 dark:hover:text-white/60"
+          class="rounded-lg p-2 text-ink-muted hover:bg-ink/5 hover:text-ink transition-colors lg:hidden dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/60"
           @click="sidebarOpen = true"
         >
           <Bars3Icon class="h-5 w-5" />
@@ -20,7 +20,7 @@
 
         <!-- Desktop collapse toggle -->
         <button
-          class="hidden rounded-lg p-2 text-ink-muted hover:bg-ink/5 hover:text-ink transition-colors lg:block dark:text-white/30 dark:hover:bg-white/5 dark:hover:text-white/60"
+          class="hidden rounded-lg p-2 text-ink-muted hover:bg-ink/5 hover:text-ink transition-colors lg:block dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/60"
           @click="sidebarCollapsed = !sidebarCollapsed"
           :title="sidebarCollapsed ? 'Expand sidebar' : 'Collapse sidebar'"
         >
@@ -36,18 +36,18 @@
 
         <!-- Search -->
         <div class="relative hidden sm:block">
-          <MagnifyingGlassIcon class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted dark:text-white/20" />
+          <MagnifyingGlassIcon class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-muted dark:text-white/50" />
           <input
             type="text"
             placeholder="Search..."
-            class="h-9 w-56 rounded-lg border border-border bg-surface pl-9 pr-4 text-[13px] text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.06] dark:bg-white/[0.03] dark:text-white/80 dark:placeholder:text-white/20 dark:focus:border-white/10 dark:focus:ring-white/10"
+            class="h-9 w-56 rounded-lg border border-border bg-surface pl-9 pr-4 text-[13px] text-ink placeholder:text-ink-muted focus:border-ink/20 focus:outline-none focus:ring-1 focus:ring-ink/10 transition-all dark:border-white/[0.06] dark:bg-white/[0.03] dark:text-white/80 dark:placeholder:text-white/35 dark:focus:border-white/10 dark:focus:ring-white/10"
           />
-          <kbd class="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-border bg-paper px-1.5 py-0.5 text-[10px] text-ink-muted font-mono dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/20">/</kbd>
+          <kbd class="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-border bg-paper px-1.5 py-0.5 text-[10px] text-ink-muted font-mono dark:border-white/[0.08] dark:bg-white/[0.03] dark:text-white/50">/</kbd>
         </div>
 
         <!-- Actions -->
         <div class="flex items-center gap-1">
-          <button class="relative rounded-lg p-2 text-ink-muted hover:bg-ink/5 hover:text-ink transition-colors dark:text-white/30 dark:hover:bg-white/5 dark:hover:text-white/60">
+          <button class="relative rounded-lg p-2 text-ink-muted hover:bg-ink/5 hover:text-ink transition-colors dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/60">
             <BellIcon class="h-5 w-5" />
             <span class="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-coral"></span>
           </button>
@@ -76,7 +76,7 @@
               >
                 <div class="border-b border-border px-4 py-2.5 dark:border-white/[0.06]">
                   <p class="text-[13px] font-medium text-ink dark:text-white/80">{{ userName }}</p>
-                  <p class="text-[11px] text-ink-muted dark:text-white/30">{{ userEmail }}</p>
+                  <p class="text-[11px] text-ink-muted dark:text-white/50">{{ userEmail }}</p>
                 </div>
                 <router-link
                   to="/settings"

@@ -4,27 +4,27 @@
     <div class="bg-ink dark:bg-white overflow-hidden">
       <div class="flex h-9 items-center whitespace-nowrap">
         <div class="animate-[marquee_30s_linear_infinite] flex items-center gap-12 pr-12">
-          <span class="flex items-center gap-2 text-xs font-medium tracking-wide text-white dark:text-ink uppercase">
+          <span class="flex items-center gap-2 text-xs font-medium tracking-wide text-white dark:text-[#111] uppercase">
             <TruckIcon class="h-3.5 w-3.5" /> Free shipping on orders over $50
           </span>
-          <span class="text-white/30 dark:text-ink/30">&#9679;</span>
-          <span class="text-xs font-medium tracking-wide text-white dark:text-ink uppercase">
+          <span class="text-white/30 dark:text-[#111]/30">&#9679;</span>
+          <span class="text-xs font-medium tracking-wide text-white dark:text-[#111] uppercase">
             Use code <strong class="text-coral">SAVE10</strong> for 10% off
           </span>
-          <span class="text-white/30 dark:text-ink/30">&#9679;</span>
-          <span class="text-xs font-medium tracking-wide text-white dark:text-ink uppercase">
+          <span class="text-white/30 dark:text-[#111]/30">&#9679;</span>
+          <span class="text-xs font-medium tracking-wide text-white dark:text-[#111] uppercase">
             30-day easy returns
           </span>
-          <span class="text-white/30 dark:text-ink/30">&#9679;</span>
-          <span class="flex items-center gap-2 text-xs font-medium tracking-wide text-white dark:text-ink uppercase">
+          <span class="text-white/30 dark:text-[#111]/30">&#9679;</span>
+          <span class="flex items-center gap-2 text-xs font-medium tracking-wide text-white dark:text-[#111] uppercase">
             <TruckIcon class="h-3.5 w-3.5" /> Free shipping on orders over $50
           </span>
-          <span class="text-white/30 dark:text-ink/30">&#9679;</span>
-          <span class="text-xs font-medium tracking-wide text-white dark:text-ink uppercase">
+          <span class="text-white/30 dark:text-[#111]/30">&#9679;</span>
+          <span class="text-xs font-medium tracking-wide text-white dark:text-[#111] uppercase">
             Use code <strong class="text-coral">SAVE10</strong> for 10% off
           </span>
-          <span class="text-white/30 dark:text-ink/30">&#9679;</span>
-          <span class="text-xs font-medium tracking-wide text-white dark:text-ink uppercase">
+          <span class="text-white/30 dark:text-[#111]/30">&#9679;</span>
+          <span class="text-xs font-medium tracking-wide text-white dark:text-[#111] uppercase">
             30-day easy returns
           </span>
         </div>
@@ -34,7 +34,7 @@
     <!-- header -->
     <header
       class="sticky top-0 z-30 transition-all duration-300"
-      :class="scrolled ? 'glass dark:glass-dark shadow-[0_1px_0_0_var(--color-border)]' : 'bg-paper dark:bg-[#0A0A0A]'"
+      :class="scrolled ? 'glass shadow-[0_1px_0_0_var(--color-border)]' : 'bg-paper dark:bg-[#0A0A0A]'"
     >
       <!-- Primary nav row -->
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -42,7 +42,7 @@
           <!-- Mobile menu button -->
           <button
             @click="mobileMenuOpen = true"
-            class="rounded-full p-2 text-ink-light hover:text-ink hover:bg-ink/5 transition-colors lg:hidden dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5"
+            class="rounded-full p-2 text-ink-light hover:text-ink hover:bg-ink/5 transition-colors lg:hidden dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5"
           >
             <Bars3Icon class="h-5 w-5" />
           </button>
@@ -56,22 +56,22 @@
           <nav class="hidden lg:flex items-center gap-1 ml-8">
             <router-link
               to="/"
-              class="px-3 py-1.5 text-[13px] font-medium text-ink-light hover:text-ink transition-colors rounded-full hover:bg-ink/5 dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5"
-              :class="{ '!text-ink !font-semibold dark:!text-ink': $route.name === 'home' }"
+              class="px-3 py-1.5 text-[13px] font-medium text-ink-light hover:text-ink transition-colors rounded-full hover:bg-ink/5 dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5"
+              :class="{ '!text-ink !font-semibold dark:!text-white': $route.name === 'home' }"
             >
               Home
             </router-link>
             <router-link
               to="/products"
-              class="px-3 py-1.5 text-[13px] font-medium text-ink-light hover:text-ink transition-colors rounded-full hover:bg-ink/5 dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5"
-              :class="{ '!text-ink !font-semibold dark:!text-ink': $route.name === 'products' }"
+              class="px-3 py-1.5 text-[13px] font-medium text-ink-light hover:text-ink transition-colors rounded-full hover:bg-ink/5 dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5"
+              :class="{ '!text-ink !font-semibold dark:!text-white': $route.name === 'products' }"
             >
               Shop
             </router-link>
             <router-link
               to="/deals"
-              class="px-3 py-1.5 text-[13px] font-medium text-ink-light hover:text-ink transition-colors rounded-full hover:bg-ink/5 dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5"
-              :class="{ '!text-ink !font-semibold dark:!text-ink': $route.name === 'deals' }"
+              class="px-3 py-1.5 text-[13px] font-medium text-ink-light hover:text-ink transition-colors rounded-full hover:bg-ink/5 dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5"
+              :class="{ '!text-ink !font-semibold dark:!text-white': $route.name === 'deals' }"
             >
               <span class="flex items-center gap-1.5">
                 Deals
@@ -80,7 +80,7 @@
             </router-link>
             <router-link
               to="/products?sort=newest"
-              class="px-3 py-1.5 text-[13px] font-medium text-ink-light hover:text-ink transition-colors rounded-full hover:bg-ink/5 dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5"
+              class="px-3 py-1.5 text-[13px] font-medium text-ink-light hover:text-ink transition-colors rounded-full hover:bg-ink/5 dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5"
             >
               New In
             </router-link>
@@ -95,7 +95,7 @@
           <div class="ml-auto flex items-center gap-0.5 sm:gap-1">
             <!-- Account -->
             <div class="relative" @mouseenter="accountOpen = true" @mouseleave="accountOpen = false">
-              <button class="flex items-center gap-1.5 rounded-full p-2 text-ink-light hover:text-ink hover:bg-ink/5 transition-colors sm:px-3 dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5">
+              <button class="flex items-center gap-1.5 rounded-full p-2 text-ink-light hover:text-ink hover:bg-ink/5 transition-colors sm:px-3 dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5">
                 <UserIcon class="h-5 w-5" />
                 <span class="hidden sm:block text-[13px] font-medium">
                   {{ authStore.getAuthenticated ? authStore.user?.name?.split(' ')[0] : 'Sign in' }}
@@ -143,7 +143,7 @@
                     <div class="p-4">
                       <router-link
                         to="/login"
-                        class="block w-full rounded-xl bg-ink dark:bg-white py-2.5 text-center text-sm font-semibold text-white dark:text-ink hover:opacity-90 transition-opacity"
+                        class="block w-full rounded-xl bg-ink dark:bg-white py-2.5 text-center text-sm font-semibold text-white dark:text-[#111] hover:opacity-90 transition-opacity"
                       >
                         Sign in
                       </router-link>
@@ -162,7 +162,7 @@
             <!-- Wishlist -->
             <router-link
               to="/wishlist"
-              class="hidden sm:flex rounded-full p-2 text-ink-light hover:text-ink hover:bg-ink/5 transition-colors dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5"
+              class="hidden sm:flex rounded-full p-2 text-ink-light hover:text-ink hover:bg-ink/5 transition-colors dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5"
             >
               <HeartIcon class="h-5 w-5" />
             </router-link>
@@ -170,7 +170,7 @@
             <!-- Cart -->
             <router-link
               to="/cart"
-              class="relative flex items-center gap-1.5 rounded-full p-2 text-ink-light hover:text-ink hover:bg-ink/5 transition-colors sm:px-3 dark:text-ink-muted dark:hover:text-ink dark:hover:bg-white/5"
+              class="relative flex items-center gap-1.5 rounded-full p-2 text-ink-light hover:text-ink hover:bg-ink/5 transition-colors sm:px-3 dark:text-ink-muted dark:hover:text-white dark:hover:bg-white/5"
             >
               <div class="relative">
                 <ShoppingCartIcon class="h-5 w-5" />

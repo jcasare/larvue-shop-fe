@@ -43,6 +43,20 @@ export const useAuthStore = defineStore("adminAuth", {
       }
     },
 
+    async updateProfile(formData) {
+      const response = await axios.post("/auth/profile", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      const user = response.data.data || response.data.user || response.data;
+      this.setUser(user);
+      return response;
+    },
+
+    async updatePassword(payload) {
+      const response = await axios.put("/auth/password", payload);
+      return response;
+    },
+
     async logout() {
       try {
         await axios.post("/auth/logout");
